@@ -17,7 +17,7 @@ final class Store {
     var token: String? {
         get {
             guard let tokenHash = userDefaults.value(forKey: Constants.tokenKey) as? String,
-                  let token = keychain.get(tokenHash)
+                  let token = keychain.get(Constants.tokenKey)
             else {
                 cleanUp()
                 return nil
@@ -43,7 +43,7 @@ final class Store {
             }
             
             let tokenHash = token.hashString
-            keychain.set(token, forKey: token)
+            keychain.set(token, forKey: Constants.tokenKey)
             userDefaults.set(tokenHash, forKey: Constants.tokenKey)
         }
     }

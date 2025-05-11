@@ -35,7 +35,9 @@ struct LoginView: View {
                 NiceButton("Sign Up",
                            style: .borderless)
                 {
-                    hostModel.showSignUp()
+                    withAnimation {
+                        hostModel.showSignUp()
+                    }
                 }
             }
             if hostModel.viewModel.showProgressView {
@@ -47,7 +49,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             if hostModel.viewModel.isLoggedIn {
-                Text("Logged")
+                CoursesView(hostModel: CoursesHostModel(backAction: hostModel))
             } else {
                 if hostModel.viewModel.showSignup {
                     SignupView(hostModel: SignupHostModel(backAction: hostModel))
@@ -55,7 +57,7 @@ struct LoginView: View {
                     loginView()
                         .disabled(hostModel.viewModel.showProgressView)
                         .onAppear {
-                            print(#function)
+                            hostModel.checkLogin()
                         }
                 }
             }

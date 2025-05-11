@@ -6,5 +6,4 @@
 //
 
 class InitViewModel {
-    var isLoggedIn: Bool? = nil
 }

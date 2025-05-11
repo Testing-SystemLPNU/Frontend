@@ -10,33 +10,11 @@ import SwiftUI
 struct InitView: View {
     
     @StateObject var hostModel: InitHostModel
-    
-    @ViewBuilder
-    func loadingIndicator() -> some View {
-        VStack {
-            ProgressView()
-            Text("Loading...")
-        }
-        .padding()
-    }
-    
     var body: some View {
         VStack {
-            if let isLoggedIn = hostModel.viewModel.isLoggedIn {
-                NavigationView {
-                    if isLoggedIn {
-                        Text("Logged in")
-                    } else {
-                        LoginView(hostModel: LoginHostModel())
-                    }
-                }
-                
-            } else {
-                loadingIndicator()
+            NavigationView {
+                LoginView(hostModel: LoginHostModel())
             }
-        }
-        .onAppear {
-            hostModel.checkToken()
         }
     }
 }

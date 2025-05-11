@@ -29,6 +29,14 @@
 		691533192DD06E1200742CD7 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691533152DD06E1200742CD7 /* SignupView.swift */; };
 		6915331A2DD06E1200742CD7 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691533162DD06E1200742CD7 /* SignupViewModel.swift */; };
 		6915331C2DD07A4300742CD7 /* BackNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6915331B2DD07A3300742CD7 /* BackNavigation.swift */; };
+		69655FAB2DD157430080AE16 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FA92DD157430080AE16 /* CoursesViewModel.swift */; };
+		69655FAC2DD157430080AE16 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FA82DD157430080AE16 /* CoursesView.swift */; };
+		69655FAD2DD157430080AE16 /* CoursesHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FA72DD157430080AE16 /* CoursesHostModel.swift */; };
+		69655FB02DD15BF70080AE16 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FAF2DD15BF10080AE16 /* SignupRequest.swift */; };
+		69655FB32DD15C150080AE16 /* APIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FB22DD15C100080AE16 /* APIConnector.swift */; };
+		69655FB52DD15C630080AE16 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FB42DD15C5F0080AE16 /* URLBuilder.swift */; };
+		69655FB72DD160E30080AE16 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FB62DD160DF0080AE16 /* LoginResponse.swift */; };
+		69655FB92DD161370080AE16 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FB82DD161370080AE16 /* LoginRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +59,14 @@
 		691533152DD06E1200742CD7 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		691533162DD06E1200742CD7 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		6915331B2DD07A3300742CD7 /* BackNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigation.swift; sourceTree = "<group>"; };
+		69655FA72DD157430080AE16 /* CoursesHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesHostModel.swift; sourceTree = "<group>"; };
+		69655FA82DD157430080AE16 /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		69655FA92DD157430080AE16 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
+		69655FAF2DD15BF10080AE16 /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		69655FB22DD15C100080AE16 /* APIConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConnector.swift; sourceTree = "<group>"; };
+		69655FB42DD15C5F0080AE16 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		69655FB62DD160DF0080AE16 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		69655FB82DD161370080AE16 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		69796A082DC8853700E7E72A /* Testing-System.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Testing-System.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,6 +110,7 @@
 		691532E82DCFCB4E00742CD7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				69655FAA2DD157430080AE16 /* Courses */,
 				691533172DD06E1200742CD7 /* Signup */,
 				691532FC2DCFED7400742CD7 /* Login */,
 				691532EA2DCFCB5B00742CD7 /* InitView */,
@@ -104,6 +121,8 @@
 		691532E92DCFCB5200742CD7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				69655FB42DD15C5F0080AE16 /* URLBuilder.swift */,
+				69655FB22DD15C100080AE16 /* APIConnector.swift */,
 				691532F52DCFE08700742CD7 /* Models */,
 				691532F02DCFCE9C00742CD7 /* Store.swift */,
 			);
@@ -134,6 +153,7 @@
 		691532F52DCFE08700742CD7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				69655FAE2DD15BE80080AE16 /* Response */,
 				691532F62DCFE08D00742CD7 /* Request */,
 			);
 			path = Models;
@@ -142,6 +162,8 @@
 		691532F62DCFE08D00742CD7 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				69655FAF2DD15BF10080AE16 /* SignupRequest.swift */,
+				69655FB82DD161370080AE16 /* LoginRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -173,6 +195,24 @@
 				691533162DD06E1200742CD7 /* SignupViewModel.swift */,
 			);
 			path = Signup;
+			sourceTree = "<group>";
+		};
+		69655FAA2DD157430080AE16 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				69655FA72DD157430080AE16 /* CoursesHostModel.swift */,
+				69655FA82DD157430080AE16 /* CoursesView.swift */,
+				69655FA92DD157430080AE16 /* CoursesViewModel.swift */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		69655FAE2DD15BE80080AE16 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				69655FB62DD160DF0080AE16 /* LoginResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		697969FF2DC8853700E7E72A = {
@@ -272,7 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6915331C2DD07A4300742CD7 /* BackNavigation.swift in Sources */,
+				69655FB02DD15BF70080AE16 /* SignupRequest.swift in Sources */,
+				69655FB72DD160E30080AE16 /* LoginResponse.swift in Sources */,
 				691532F42DCFCF2300742CD7 /* String+Utils.swift in Sources */,
+				69655FB52DD15C630080AE16 /* URLBuilder.swift in Sources */,
+				69655FB32DD15C150080AE16 /* APIConnector.swift in Sources */,
+				69655FAB2DD157430080AE16 /* CoursesViewModel.swift in Sources */,
+				69655FAC2DD157430080AE16 /* CoursesView.swift in Sources */,
+				69655FAD2DD157430080AE16 /* CoursesHostModel.swift in Sources */,
+				69655FB92DD161370080AE16 /* LoginRequest.swift in Sources */,
 				691532EF2DCFCE9000742CD7 /* AppManager.swift in Sources */,
 				691533132DD06BAF00742CD7 /* SerialTasks.swift in Sources */,
 				691533182DD06E1200742CD7 /* SignupHostModel.swift in Sources */,

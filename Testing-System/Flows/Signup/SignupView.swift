@@ -25,17 +25,24 @@ struct SignupView: View {
                               contentType: .emailAddress,
                               placeholder: "Email")
                 NiceTextField($hostModel.viewModel.password,
-                              contentType: .emailAddress,
+                              contentType: .password,
                               isSecure: true,
                               placeholder: "Password")
+                NiceTextField($hostModel.viewModel.confirmPassword,
+                              contentType: .password,
+                              isSecure: true,
+                              placeholder: "Confirm Password")
                 NiceButton("Sign Up",
                            style: .primary)
                 {
+                    hostModel.signup()
                 }
                 NiceButton("Already have an account? Login",
                            style: .borderless)
                 {
-                    hostModel.goBack()
+                    withAnimation {
+                        hostModel.goBack()
+                    }
                 }
                 Spacer()
             }

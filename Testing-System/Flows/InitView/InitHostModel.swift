@@ -13,9 +13,4 @@ class InitHostModel: BaseHostModel {
     override init() {
         self.viewModel = InitViewModel()
     }
-    
-    func checkToken() {
-        viewModel.isLoggedIn = AppManager.shared.store.token != nil
-        publishUpdate()
-    }
 }

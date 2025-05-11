@@ -1,15 +1,14 @@
 //
-//  SignupViewModel.swift
+//  CoursesViewModel.swift
 //  Testing-System
 //
 //  Created by Ihor Shevchuk on 5/10/25.
 //
 
-class SignupViewModel {
+class CoursesViewModel {
     var fullname: String = ""
     var email: String = ""
     var password: String = ""
-    var confirmPassword: String = ""
     var showProgressView: Bool = false
     var isLoggedIn: Bool = false
 }

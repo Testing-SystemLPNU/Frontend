@@ -29,6 +29,7 @@ class LoginHostModel: BaseHostModel {
     
     func checkLogin() {
         viewModel.isLoggedIn = AppManager.shared.store.token != nil
+        publishUpdate()
     }
     
     private func doLoginAsync() async {
@@ -42,6 +43,7 @@ class LoginHostModel: BaseHostModel {
 extension LoginHostModel: BackNavigation {
     func back() {
         viewModel.showSignup = false
+        checkLogin()
         publishUpdate()
     }
 }
