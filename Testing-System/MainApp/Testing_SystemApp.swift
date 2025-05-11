@@ -11,7 +11,8 @@ import SwiftUI
 struct Testing_SystemApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitView(hostModel: InitHostModel())
+                .padding()
         }
     }
 }
