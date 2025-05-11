@@ -17,11 +17,11 @@ struct LoginView: View {
         ZStack {
             VStack {
                 NiceText("Login", style: .screenTitle)
-                NiceTextField($hostModel.viewModel.userName,
+                NiceTextField($hostModel.viewModel.username,
                               contentType: .emailAddress,
                               placeholder: "Username")
                 NiceTextField($hostModel.viewModel.password,
-                              contentType: .emailAddress,
+                              contentType: .password,
                               isSecure: true,
                               placeholder: "Password")
                 

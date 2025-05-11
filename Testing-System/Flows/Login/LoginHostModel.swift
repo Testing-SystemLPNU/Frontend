@@ -33,10 +33,20 @@ class LoginHostModel: BaseHostModel {
     }
     
     private func doLoginAsync() async {
-        viewModel.showProgressView = false
-        // do login
-        viewModel.isLoggedIn = true
-        publishUpdate()
+        defer {
+            viewModel.showProgressView = false
+            publishUpdate()
+        }
+        
+        let loginRequest = LoginRequest(email: viewModel.username,
+                                          password: viewModel.password)
+        do {
+            let result = try await AppManager.shared.apiConnector.login(loginRequest)
+            AppManager.shared.store.token = result.token
+            checkLogin()
+        } catch {
+            print("Loggin error: \(error)")
+        }
     }
 }
 

@@ -6,7 +6,7 @@
 //
 
 class LoginViewModel {
-    var userName: String = ""
+    var username: String = ""
     var password: String = ""
     var showProgressView: Bool = false
     var isLoggedIn: Bool = false
