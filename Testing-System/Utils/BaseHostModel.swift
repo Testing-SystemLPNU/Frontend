@@ -12,8 +12,7 @@ class BaseHostModel: ObservableObject {
     
     weak var backAction: BackNavigation?
     
-    convenience init(backAction: BackNavigation? = nil) {
-        self.init()
+    init(backAction: BackNavigation? = nil) {
         self.backAction = backAction
     }
     

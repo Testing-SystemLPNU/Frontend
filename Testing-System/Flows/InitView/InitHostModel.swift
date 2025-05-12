@@ -10,7 +10,9 @@ import Foundation
 class InitHostModel: BaseHostModel {
     @Published private(set) var viewModel: InitViewModel
     
-    override init() {
+    override init(backAction: BackNavigation? = nil) {
         self.viewModel = InitViewModel()
+        super.init(backAction: backAction)
     }
+    
 }

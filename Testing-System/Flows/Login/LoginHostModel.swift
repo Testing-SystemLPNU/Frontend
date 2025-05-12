@@ -10,8 +10,9 @@ import Foundation
 class LoginHostModel: BaseHostModel {
     @Published var viewModel: LoginViewModel
     
-    override init() {
+    override init(backAction: BackNavigation? = nil) {
         self.viewModel = LoginViewModel()
+        super.init(backAction: backAction)
     }
     
     func login() {
@@ -43,6 +44,8 @@ class LoginHostModel: BaseHostModel {
         do {
             let result = try await AppManager.shared.apiConnector.login(loginRequest)
             AppManager.shared.store.token = result.token
+            viewModel.username = ""
+            viewModel.password = ""
             checkLogin()
         } catch {
             print("Loggin error: \(error)")

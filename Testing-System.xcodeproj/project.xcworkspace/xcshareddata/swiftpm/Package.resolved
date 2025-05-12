@@ -1,5 +1,5 @@
 {
-  "originHash" : "21644c337a9ce5d197fffa63895c350c4ddef1cde7b99ad674296ec708e16037",
+  "originHash" : "92b7b7eb0a22d822617f4ea1ab8037987fb764257b740690696538452cfcba6f",
   "pins" : [
     {
       "identity" : "keychain-swift",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
         "version" : "509.1.1"
+      }
+    },
+    {
+      "identity" : "swipeactions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/SwipeActions",
+      "state" : {
+        "revision" : "41e6f6dce02d8cfa164f8c5461a41340850ca3ab",
+        "version" : "1.1.0"
       }
     }
   ],
