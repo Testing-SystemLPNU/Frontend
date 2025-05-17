@@ -64,16 +64,29 @@ struct AddEditTicketView: View {
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "xmark.circle.fill"))) {
-                        hostModel.goBack()
+                    HStack(spacing:0) {
+                        
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "xmark.circle.fill"))) {
+                            hostModel.goBack()
+                        }
+                        
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "square.and.arrow.up.circle"))) {
+                            hostModel.sharePDF()
+                        }
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.circle.fill"))) {
-                        hostModel.save()
+                    HStack(spacing:0) {
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.arrow.trianglehead.counterclockwise"))) {
+                            //                        hostModel.addNewTicket()
+                        }
+                        
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.circle.fill"))) {
+                            hostModel.save()
+                        }
+                        .disabled(hostModel.viewModel.ticket.questionIds.isEmpty)
                     }
-                    .disabled(hostModel.viewModel.ticket.questionIds.isEmpty)
                 }
             }
             
@@ -85,10 +98,21 @@ struct AddEditTicketView: View {
     
     var body: some View {
         VStack {
-            ticketView()
-                .onAppear {
-                    hostModel.loadQuestions()
-                }
+                ticketView()
+                    .onAppear {
+                        hostModel.loadQuestions()
+                    }
+                    .sheet(isPresented: .init(get: {
+                        return hostModel.viewModel.pdfURL != nil
+                    }, set: { show in
+                        if !show {
+                            hostModel.viewModel.pdfURL = nil
+                        }
+                    })) {
+                        if let url = hostModel.viewModel.pdfURL {
+                            ShareSheet(activityItems: [url])
+                        }
+                    }
         }
         .padding()
     }

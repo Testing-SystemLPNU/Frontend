@@ -105,4 +105,31 @@ class AddEditTicketHostModel: BaseHostModel {
             print("Load questions error: \(error)")
         }
     }
+    
+    
+    func sharePDF() {
+        viewModel.showProgressView = true
+        publishUpdate()
+        AppManager.shared.serialTasks.run { [weak self] in
+            await self?.doSharePDF()
+        }
+    }
+    
+    func doSharePDF() async {
+        defer {
+            viewModel.showProgressView = false
+            publishUpdate()
+        }
+        
+        do {
+            let pdfData = try await AppManager.shared.apiConnector.pdf(ticket: viewModel.ticket, for: viewModel.course)
+            let tempDir = FileManager.default.temporaryDirectory
+            let fileName = "ticket_\( viewModel.ticket.id ?? 0)_\(viewModel.ticket.studentGroup)_\((viewModel.ticket.studentFullName)).pdf"
+            let fileURL = tempDir.appendingPathComponent(fileName)
+            try pdfData.write(to: fileURL)
+            viewModel.pdfURL = fileURL
+        } catch {
+            print("Load PDF error: \(error)")
+        }
+    }
 }

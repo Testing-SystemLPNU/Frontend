@@ -138,10 +138,20 @@ class APIConnector {
         return try await send(ticket, url:url, method: .put)
     }
     
+    func pdf(ticket: Ticket, for course: Course) async throws -> Data {
+        guard let ticketID = ticket.id,
+              let courseId = course.id else {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.ticketPDFurl(withId: String(ticketID), forCourseWithId: String(courseId))
+        
+        return try await getData(Constants.EmptyResult, url: url, method: .get)
+    }
+    
     // MARK: - Private
     
-    @discardableResult
-    private func send<T: Decodable, U: Encodable>(_ body: U? = nil, url: URL, method: String) async throws -> T {
+    private func getData<U: Encodable>(_ body: U? = nil, url: URL, method: String) async throws -> Data {
         var request = URLRequest(url: url)
         request.httpMethod = method
         if let body {
@@ -166,10 +176,15 @@ class APIConnector {
             throw APIError.invalidResponse
         }
         
-        var dataToDecode = data
-        if method == "DELETE" && dataToDecode.isEmpty {
-            dataToDecode = "{}".data(using: .utf8)!
+        if method == "DELETE" && data.isEmpty {
+            return "{}".data(using: .utf8)!
         }
+        return data
+    }
+    
+    @discardableResult
+    private func send<T: Decodable, U: Encodable>(_ body: U? = nil, url: URL, method: String) async throws -> T {
+        let dataToDecode = try await getData(body, url: url, method: method)
     
         return try JSONDecoder().decode(T.self, from: dataToDecode)
     }

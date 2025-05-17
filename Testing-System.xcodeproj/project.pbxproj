@@ -60,6 +60,7 @@
 		69B128C62DD9203C00D09ED0 /* AddEditTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */; };
 		69B128C72DD9203C00D09ED0 /* AddEditTicketHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */; };
 		69B128C82DD9203C00D09ED0 /* AddEditTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */; };
+		69B128CC2DD9390A00D09ED0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128CB2DD9390900D09ED0 /* ShareSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketHostModel.swift; sourceTree = "<group>"; };
 		69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketView.swift; sourceTree = "<group>"; };
 		69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketViewModel.swift; sourceTree = "<group>"; };
+		69B128CB2DD9390900D09ED0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				691532F32DCFCF1F00742CD7 /* String+Utils.swift */,
 				691533122DD06BAF00742CD7 /* SerialTasks.swift */,
 				6915331B2DD07A3300742CD7 /* BackNavigation.swift */,
+				69B128CB2DD9390900D09ED0 /* ShareSheet.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				69B128B82DD90B4D00D09ED0 /* AddEditQuestionView.swift in Sources */,
 				69B128B92DD90B4D00D09ED0 /* CourseViewModel.swift in Sources */,
 				69B128BA2DD90B4D00D09ED0 /* QuestionsViewModel.swift in Sources */,
+				69B128CC2DD9390A00D09ED0 /* ShareSheet.swift in Sources */,
 				69B128BB2DD90B4D00D09ED0 /* QuestionsHostModel.swift in Sources */,
 				69B128BC2DD90B4D00D09ED0 /* CourseHostModel.swift in Sources */,
 				69B128BD2DD90B4D00D09ED0 /* AddEditQuestionViewModel.swift in Sources */,

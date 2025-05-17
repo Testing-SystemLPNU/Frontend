@@ -84,13 +84,13 @@ struct CoursesView: View {
             .navigationTitle("Available Courses")
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
                         hostModel.addNewCourse()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "gearshape.circle.fill"))) {
                         hostModel.showSettings()
                     }
