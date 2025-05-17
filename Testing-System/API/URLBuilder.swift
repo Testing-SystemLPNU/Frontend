@@ -18,6 +18,8 @@ class URLBuilder {
         case login
         // MARK: - Courses
         case courses
+        // MARK: - Questions
+        case questions
     }
     
     init(baseURL: URL) {
@@ -43,6 +45,16 @@ class URLBuilder {
     
     func courseURL(withId id: String) -> URL {
         return coursesURL
+            .appendingPathComponent(id)
+    }
+    
+    func questions(forCourseWithId id: String) -> URL {
+        return courseURL(withId: id)
+            .appendingPathComponent(Path.questions.rawValue)
+    }
+    
+    func questionURL(withId id: String, forCourseWithId courseId: String) -> URL {
+        return questions(forCourseWithId: courseId)
             .appendingPathComponent(id)
     }
 }

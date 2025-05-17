@@ -16,13 +16,28 @@ struct CoursesView: View {
     @ViewBuilder
     func courseItemView(_ course: Course)  -> some View {
         SwipeView {
-            VStack {
-                NiceText(course.title,
-                         style: .itemTitle)
-                NiceText(course.description,
-                         style: .detail)
-                NiceDivider()
-            }
+                Button {
+                    hostModel.viewCourse(course)
+                } label: {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            NiceText(course.title,
+                                     style: .itemTitle)
+                            NiceText(course.description,
+                                     style: .detail)
+                        }
+                        Spacer()
+                    }
+                }
+            .background(
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .fill(Config.current.colorStyle.shadow)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .strokeBorder(Config.current.colorStyle.divider, lineWidth: 1)
+            )
         } leadingActions: { _ in
             SwipeAction {
                 hostModel.edit(course:course)
@@ -95,6 +110,8 @@ struct CoursesView: View {
         VStack {
             if let courseToEdit = hostModel.viewModel.courseToEditAdd {
                 AddEditCourseView(hostModel: AddEditCourseHostModel(course: courseToEdit, backAction: hostModel))
+            } else if let courseToView = hostModel.viewModel.courseView {
+                CourseView(hostModel: CourseHostModel(course: courseToView, backAction: hostModel))
             } else {
                 coursesView()
             }

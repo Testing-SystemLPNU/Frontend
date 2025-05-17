@@ -19,8 +19,7 @@ class CoursesHostModel: BaseHostModel {
     }
     
     func addNewCourse() {
-        viewModel.courseToEditAdd = Course(id: nil, title: "", description: "")
-        publishUpdate()
+        edit(course: Course(id: nil, title: "", description: ""))
     }
     
     func edit(course: Course) {
@@ -34,6 +33,11 @@ class CoursesHostModel: BaseHostModel {
         AppManager.shared.serialTasks.run { [weak self] in
             await self?.doDelete(course: course)
         }
+    }
+    
+    func viewCourse(_ course: Course) {
+        viewModel.courseView = course
+        publishUpdate()
     }
     
     func showSettings() {
@@ -76,5 +80,6 @@ extension CoursesHostModel: BackNavigation {
             publishUpdate()
         }
         viewModel.courseToEditAdd = nil
+        viewModel.courseView = nil
     }
 }

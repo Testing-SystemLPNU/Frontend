@@ -15,12 +15,6 @@ struct AddEditCourseView: View {
     var isEditCourse: Bool {
         return hostModel.viewModel.course.id != nil
     }
-
-    
-    @ViewBuilder
-    func courseView(_ course: Course)  -> some View {
-        Text(course.title)
-    }
     
     @ViewBuilder
     func courseView() -> some View {
@@ -61,6 +55,7 @@ struct AddEditCourseView: View {
         VStack {
             courseView()
         }
+        .padding()
     }
 }
 

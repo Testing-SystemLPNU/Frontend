@@ -11,7 +11,7 @@ class AddEditCourseHostModel: BaseHostModel {
     @Published var viewModel: AddEditCourseViewModel
     
     init(course: Course, backAction: BackNavigation) {
-        self.viewModel = AddEditCourseViewModel(course: course, showProgressView: false)
+        self.viewModel = AddEditCourseViewModel(course: course)
         super.init(backAction: backAction)
     }
     

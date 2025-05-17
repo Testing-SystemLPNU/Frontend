@@ -22,6 +22,7 @@ class APIConnector {
     
     enum APIError: Error {
         case invalidResponse
+        case wrongBody
     }
     
     let urlBuilder: URLBuilder
@@ -31,6 +32,8 @@ class APIConnector {
         
     }
     
+    // MARK: - Login & Sign up
+    
     func signup(_ model: SignupRequest) async throws -> LoginResponse {
         return try await send(model, url:urlBuilder.signupURL, method: .post)
     }
@@ -38,6 +41,8 @@ class APIConnector {
     func login(_ model: LoginRequest) async throws -> LoginResponse {
         return try await send(model, url:urlBuilder.loginURL, method: .post)
     }
+    
+    // MARK: - Courses
     
     func courses() async throws -> [Course] {
         return try await send(Constants.EmptyResult, url:urlBuilder.coursesURL, method: .get)
@@ -54,6 +59,47 @@ class APIConnector {
         }
         _ = try await send(Constants.EmptyResult, url:urlBuilder.courseURL(withId: String(id)), method: .delete) as EmptyModel?
     }
+    
+    // MARK: - Questions
+    
+    func questions(course: Course) async throws -> [Question] {
+        guard let id = course.id else {
+            return []
+        }
+        
+        return try await send(Constants.EmptyResult, url: urlBuilder.questions(forCourseWithId: String(id)), method: .get)
+    }
+    
+    @discardableResult
+    func create(question: Question, for course: Course) async throws -> Question {
+        guard let id = course.id else {
+            throw APIError.wrongBody
+        }
+        
+        return try await send(question, url:urlBuilder.questions(forCourseWithId: String(id)), method: .post)
+    }
+    
+    func delete(question: Question, from course: Course) async throws {
+        guard let questionID = question.id,
+              let courseId = course.id else {
+            return
+        }
+        
+        let url = urlBuilder.questionURL(withId: String(questionID), forCourseWithId: String(courseId))
+        _ = try await send(Constants.EmptyResult, url:url, method: .delete) as EmptyModel?
+    }
+    
+    @discardableResult
+    func update(question: Question, at course: Course) async throws -> Question {
+        guard let questionID = question.id,
+              let courseId = course.id else {
+            throw APIError.wrongBody
+        }
+        let url = urlBuilder.questionURL(withId: String(questionID), forCourseWithId: String(courseId))
+        return try await send(question, url:url, method: .put)
+    }
+    
+    // MARK: - Private
     
     @discardableResult
     private func send<T: Decodable, U: Encodable>(_ body: U? = nil, url: URL, method: String) async throws -> T {
@@ -72,6 +118,11 @@ class APIConnector {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.invalidResponse
         }
+        
+        if httpResponse.statusCode == 401 {
+            AppManager.shared.store.token = nil
+        }
+        
         guard (200...299).contains(httpResponse.statusCode) else {
             throw APIError.invalidResponse
         }

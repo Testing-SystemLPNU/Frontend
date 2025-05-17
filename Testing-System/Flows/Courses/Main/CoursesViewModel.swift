@@ -8,5 +8,6 @@
 class CoursesViewModel {
     var courses: [Course] = []
     var courseToEditAdd: Course? = nil
+    var courseView: Course? = nil
     var showProgressView: Bool = true
 }

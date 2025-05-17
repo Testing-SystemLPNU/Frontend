@@ -12,7 +12,7 @@ struct Testing_SystemApp: App {
     var body: some Scene {
         WindowGroup {
             InitView(hostModel: InitHostModel())
-                .padding()
+                .padding(.top, 15)
         }
     }
 }
