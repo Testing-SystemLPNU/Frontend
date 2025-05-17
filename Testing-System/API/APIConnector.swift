@@ -99,6 +99,45 @@ class APIConnector {
         return try await send(question, url:url, method: .put)
     }
     
+    // MARK: - Tickets
+    
+    func tickets(course: Course) async throws -> [Ticket] {
+        guard let id = course.id else {
+            return []
+        }
+        
+        return try await send(Constants.EmptyResult, url: urlBuilder.ticketsURL(forCourseWithId: String(id)), method: .get)
+    }
+    
+    @discardableResult
+    func create(ticket: Ticket, for course: Course) async throws -> Ticket {
+        guard let id = course.id else {
+            throw APIError.wrongBody
+        }
+        
+        return try await send(ticket, url:urlBuilder.ticketsURL(forCourseWithId: String(id)), method: .post)
+    }
+    
+    func delete(ticket: Ticket, from course: Course) async throws {
+        guard let ticketID = ticket.id,
+              let courseId = course.id else {
+            return
+        }
+        
+        let url = urlBuilder.ticketURL(withId: String(ticketID), forCourseWithId: String(courseId))
+        _ = try await send(Constants.EmptyResult, url:url, method: .delete) as EmptyModel?
+    }
+    
+    @discardableResult
+    func update(ticket: Ticket, at course: Course) async throws -> Ticket {
+        guard let ticketID = ticket.id,
+              let courseId = course.id else {
+            throw APIError.wrongBody
+        }
+        let url = urlBuilder.ticketURL(withId: String(ticketID), forCourseWithId: String(courseId))
+        return try await send(ticket, url:url, method: .put)
+    }
+    
     // MARK: - Private
     
     @discardableResult

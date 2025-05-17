@@ -58,7 +58,7 @@ class QuestionsHostModel: BaseHostModel {
             loadQuestions()
         }
         do {
-//            try await AppManager.shared.apiConnector.delete(q: Course)
+            try await AppManager.shared.apiConnector.delete(question: question, from: viewModel.course)
         } catch {
             print("Create course error: \(error)")
         }

@@ -60,7 +60,7 @@ struct CourseView: View {
             case .questions:
                 QuestionsView(hostModel: QuestionsHostModel(course: hostModel.viewModel.course, backAction: hostModel))
             case .tickets:
-                Text("tickets")
+                TicketsView(hostModel: TicketsHostModel(course: hostModel.viewModel.course, backAction: hostModel))
             }
         }
     }

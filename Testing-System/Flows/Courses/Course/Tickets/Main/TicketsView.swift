@@ -1,5 +1,5 @@
 //
-//  QuestionsView.swift
+//  TicketsView.swift
 //  Testing-System
 //
 //  Created by Ihor Shevchuk on 5/4/25.
@@ -9,20 +9,20 @@ import SwiftUI
 import NiceComponents
 import SwipeActions
 
-struct QuestionsView: View {
+struct TicketsView: View {
     
-    @StateObject var hostModel: QuestionsHostModel
+    @StateObject var hostModel: TicketsHostModel
     
     @ViewBuilder
-    func questionItemView(_ question: Question)  -> some View {
+    func ticketItemView(_ ticket: Ticket)  -> some View {
         SwipeView {
                 Button {
-                    hostModel.edit(question: question)
+                    hostModel.edit(ticket:ticket)
                 } label: {
                     HStack {
                         Spacer()
                         VStack {
-                            NiceText(question.questionText,
+                            NiceText("\(ticket.studentGroup): \(ticket.studentFullName)",
                                      style: .itemTitle)
                         }
                         Spacer()
@@ -39,7 +39,7 @@ struct QuestionsView: View {
             )
         } trailingActions: { _ in
             SwipeAction {
-                hostModel.delete(question: question)
+                hostModel.delete(ticket:ticket)
             } label: { _ in
                 NiceImage(systemIcon:"trash",
                           tintColor: .white)
@@ -54,14 +54,14 @@ struct QuestionsView: View {
         ZStack {
             NavigationView {
                 VStack {
-                    if hostModel.viewModel.questions.isEmpty {
-                        NiceText("No Questions! Create One Using '+' Button above!",
+                    if hostModel.viewModel.tickets.isEmpty {
+                        NiceText("No Tickets! Create One Using '+' Button above!",
                                  style: .itemTitle)
                         .multilineTextAlignment(.center)
                         .padding()
                     } else {
-                        List(hostModel.viewModel.questions, id: \.id) { question in
-                            questionItemView(question)
+                        List(hostModel.viewModel.tickets, id: \.id) { ticket in
+                            ticketItemView(ticket)
                         }
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
@@ -69,7 +69,7 @@ struct QuestionsView: View {
                 }
                 .padding(.top, 15)
             }
-            .navigationTitle("Questions:\(hostModel.viewModel.course.title)")
+            .navigationTitle("Tickets:\(hostModel.viewModel.course.title)")
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -80,7 +80,7 @@ struct QuestionsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
-                        hostModel.addNewQuestion()
+                        hostModel.addNewTicket()
                     }
                 }
             }
@@ -93,12 +93,12 @@ struct QuestionsView: View {
     
     var body: some View {
         VStack {
-            if let question = hostModel.viewModel.questionToEditAdd {
-                AddEditQuestionView(hostModel: AddEditQuestionHostModel(course: hostModel.viewModel.course, question: question, backAction: hostModel))
+            if let ticket = hostModel.viewModel.ticketToEditAdd {
+                AddEditTicketView(hostModel: AddEditTicketHostModel(course: hostModel.viewModel.course, ticket: ticket, backAction: hostModel))
             } else {
                 courseView()
                     .onAppear {
-                        hostModel.loadQuestions()
+                        hostModel.loadTickets()
                     }
             }
         }

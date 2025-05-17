@@ -12,14 +12,16 @@ class URLBuilder {
     var baseURL: URL
     
     enum Path: String {
-        // MARK: - Auth
+        // Auth
         case auth
         case signup
         case login
-        // MARK: - Courses
+        // Courses
         case courses
-        // MARK: - Questions
+        // Questions
         case questions
+        // Tickets
+        case tickets
     }
     
     init(baseURL: URL) {
@@ -55,6 +57,16 @@ class URLBuilder {
     
     func questionURL(withId id: String, forCourseWithId courseId: String) -> URL {
         return questions(forCourseWithId: courseId)
+            .appendingPathComponent(id)
+    }
+    
+    func ticketsURL(forCourseWithId id: String) -> URL {
+        return courseURL(withId: id)
+            .appendingPathComponent(Path.tickets.rawValue)
+    }
+    
+    func ticketURL(withId id: String, forCourseWithId courseId: String) -> URL {
+        return ticketsURL(forCourseWithId: courseId)
             .appendingPathComponent(id)
     }
 }

@@ -44,10 +44,10 @@
 		69655FC72DD171630080AE16 /* AddEditCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FC52DD171630080AE16 /* AddEditCourseViewModel.swift */; };
 		69655FC82DD171630080AE16 /* AddEditCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69655FC42DD171630080AE16 /* AddEditCourseView.swift */; };
 		69B128992DD902E100D09ED0 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128982DD902DD00D09ED0 /* Question.swift */; };
-		69B128B42DD90B4D00D09ED0 /* CourseView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AF2DD90B4D00D09ED0 /* CourseView1.swift */; };
-		69B128B52DD90B4D00D09ED0 /* CourseViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128B02DD90B4D00D09ED0 /* CourseViewModel1.swift */; };
+		69B128B42DD90B4D00D09ED0 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AF2DD90B4D00D09ED0 /* TicketsView.swift */; };
+		69B128B52DD90B4D00D09ED0 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128B02DD90B4D00D09ED0 /* TicketsViewModel.swift */; };
 		69B128B62DD90B4D00D09ED0 /* QuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AA2DD90B4D00D09ED0 /* QuestionsView.swift */; };
-		69B128B72DD90B4D00D09ED0 /* CourseHostModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AE2DD90B4D00D09ED0 /* CourseHostModel1.swift */; };
+		69B128B72DD90B4D00D09ED0 /* TicketsHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AE2DD90B4D00D09ED0 /* TicketsHostModel.swift */; };
 		69B128B82DD90B4D00D09ED0 /* AddEditQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128A62DD90B4D00D09ED0 /* AddEditQuestionView.swift */; };
 		69B128B92DD90B4D00D09ED0 /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128A32DD90B4D00D09ED0 /* CourseViewModel.swift */; };
 		69B128BA2DD90B4D00D09ED0 /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128AB2DD90B4D00D09ED0 /* QuestionsViewModel.swift */; };
@@ -56,6 +56,10 @@
 		69B128BD2DD90B4D00D09ED0 /* AddEditQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128A72DD90B4D00D09ED0 /* AddEditQuestionViewModel.swift */; };
 		69B128BE2DD90B4D00D09ED0 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128A22DD90B4D00D09ED0 /* CourseView.swift */; };
 		69B128BF2DD90B4D00D09ED0 /* AddEditQuestionHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128A52DD90B4D00D09ED0 /* AddEditQuestionHostModel.swift */; };
+		69B128C12DD91D5800D09ED0 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C02DD91D5600D09ED0 /* Ticket.swift */; };
+		69B128C62DD9203C00D09ED0 /* AddEditTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */; };
+		69B128C72DD9203C00D09ED0 /* AddEditTicketHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */; };
+		69B128C82DD9203C00D09ED0 /* AddEditTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,9 +106,13 @@
 		69B128A92DD90B4D00D09ED0 /* QuestionsHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsHostModel.swift; sourceTree = "<group>"; };
 		69B128AA2DD90B4D00D09ED0 /* QuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsView.swift; sourceTree = "<group>"; };
 		69B128AB2DD90B4D00D09ED0 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
-		69B128AE2DD90B4D00D09ED0 /* CourseHostModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHostModel1.swift; sourceTree = "<group>"; };
-		69B128AF2DD90B4D00D09ED0 /* CourseView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView1.swift; sourceTree = "<group>"; };
-		69B128B02DD90B4D00D09ED0 /* CourseViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel1.swift; sourceTree = "<group>"; };
+		69B128AE2DD90B4D00D09ED0 /* TicketsHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsHostModel.swift; sourceTree = "<group>"; };
+		69B128AF2DD90B4D00D09ED0 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
+		69B128B02DD90B4D00D09ED0 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
+		69B128C02DD91D5600D09ED0 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketHostModel.swift; sourceTree = "<group>"; };
+		69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketView.swift; sourceTree = "<group>"; };
+		69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +205,7 @@
 				69655FBA2DD16CA70080AE16 /* Course.swift */,
 				69B128982DD902DD00D09ED0 /* Question.swift */,
 				69655FBC2DD16DF70080AE16 /* EmptyModel.swift */,
+				69B128C02DD91D5600D09ED0 /* Ticket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,9 +328,9 @@
 		69B128B12DD90B4D00D09ED0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				69B128AE2DD90B4D00D09ED0 /* CourseHostModel1.swift */,
-				69B128AF2DD90B4D00D09ED0 /* CourseView1.swift */,
-				69B128B02DD90B4D00D09ED0 /* CourseViewModel1.swift */,
+				69B128AE2DD90B4D00D09ED0 /* TicketsHostModel.swift */,
+				69B128AF2DD90B4D00D09ED0 /* TicketsView.swift */,
+				69B128B02DD90B4D00D09ED0 /* TicketsViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -329,6 +338,7 @@
 		69B128B22DD90B4D00D09ED0 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
+				69B128C52DD9203C00D09ED0 /* AddEditTicket */,
 				69B128B12DD90B4D00D09ED0 /* Main */,
 			);
 			path = Tickets;
@@ -342,6 +352,16 @@
 				69B128B22DD90B4D00D09ED0 /* Tickets */,
 			);
 			path = Course;
+			sourceTree = "<group>";
+		};
+		69B128C52DD9203C00D09ED0 /* AddEditTicket */ = {
+			isa = PBXGroup;
+			children = (
+				69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */,
+				69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */,
+				69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */,
+			);
+			path = AddEditTicket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,10 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69B128B42DD90B4D00D09ED0 /* CourseView1.swift in Sources */,
-				69B128B52DD90B4D00D09ED0 /* CourseViewModel1.swift in Sources */,
+				69B128B42DD90B4D00D09ED0 /* TicketsView.swift in Sources */,
+				69B128B52DD90B4D00D09ED0 /* TicketsViewModel.swift in Sources */,
 				69B128B62DD90B4D00D09ED0 /* QuestionsView.swift in Sources */,
-				69B128B72DD90B4D00D09ED0 /* CourseHostModel1.swift in Sources */,
+				69B128B72DD90B4D00D09ED0 /* TicketsHostModel.swift in Sources */,
 				69B128B82DD90B4D00D09ED0 /* AddEditQuestionView.swift in Sources */,
 				69B128B92DD90B4D00D09ED0 /* CourseViewModel.swift in Sources */,
 				69B128BA2DD90B4D00D09ED0 /* QuestionsViewModel.swift in Sources */,
@@ -458,10 +478,14 @@
 				691532E62DCFCB3B00742CD7 /* Testing_SystemApp.swift in Sources */,
 				691532F12DCFCE9C00742CD7 /* Store.swift in Sources */,
 				691533062DD066BC00742CD7 /* BaseHostModel.swift in Sources */,
+				69B128C62DD9203C00D09ED0 /* AddEditTicketViewModel.swift in Sources */,
+				69B128C72DD9203C00D09ED0 /* AddEditTicketHostModel.swift in Sources */,
+				69B128C82DD9203C00D09ED0 /* AddEditTicketView.swift in Sources */,
 				69655FC62DD171630080AE16 /* AddEditCourseHostModel.swift in Sources */,
 				69655FC72DD171630080AE16 /* AddEditCourseViewModel.swift in Sources */,
 				69655FC82DD171630080AE16 /* AddEditCourseView.swift in Sources */,
 				691532FB2DCFE9F200742CD7 /* InitHostModel.swift in Sources */,
+				69B128C12DD91D5800D09ED0 /* Ticket.swift in Sources */,
 				691532F92DCFE2BD00742CD7 /* InitViewModel.swift in Sources */,
 				6915330A2DD0680200742CD7 /* LoginView.swift in Sources */,
 				69655FBB2DD16CB00080AE16 /* Course.swift in Sources */,
