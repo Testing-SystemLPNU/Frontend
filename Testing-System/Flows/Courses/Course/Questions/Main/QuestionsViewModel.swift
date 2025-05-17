@@ -10,6 +10,7 @@ class QuestionsViewModel {
     var questions: [Question] = []
     var questionToEditAdd: Question? = nil
     var showProgressView: Bool = false
+    var presentImportFile: Bool = false
     init(course: Course, showProgressView: Bool = false) {
         self.course = course
         self.showProgressView = showProgressView

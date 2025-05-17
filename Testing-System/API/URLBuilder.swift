@@ -23,6 +23,8 @@ class URLBuilder {
         // Tickets
         case tickets
         case pdf
+        // Generate
+        case generate
     }
     
     init(baseURL: URL) {
@@ -74,5 +76,11 @@ class URLBuilder {
     func ticketPDFurl(withId id: String, forCourseWithId courseId: String) -> URL {
         return ticketURL(withId:id, forCourseWithId: courseId)
             .appendingPathComponent(Path.pdf.rawValue)
+    }
+    
+    func generateQuestionsURL(withId id: String) -> URL {
+        return courseURL(withId: id)
+            .appendingPathComponent(Path.questions.rawValue)
+            .appendingPathComponent(Path.generate.rawValue)
     }
 }

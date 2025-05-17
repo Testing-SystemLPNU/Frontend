@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 fileprivate extension String {
     static let get = "GET"
@@ -149,7 +150,30 @@ class APIConnector {
         return try await getData(Constants.EmptyResult, url: url, method: .get)
     }
     
+    @discardableResult
+    func generateQuestionsFromFile(at fileUrl: URL, for course: Course) async throws -> [Question] {
+        guard let courseId = course.id else {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.generateQuestionsURL(withId: String(courseId))
+        
+        let (data, response) = try await uploadFileMultipart(fileURL: fileUrl, to: url)
+        try handleResponse(response)
+        return try JSONDecoder().decode([Question].self, from: data)
+    }
+    
     // MARK: - Private
+    
+    private func handleResponse(_ response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw APIError.invalidResponse
+        }
+    }
     
     private func getData<U: Encodable>(_ body: U? = nil, url: URL, method: String) async throws -> Data {
         var request = URLRequest(url: url)
@@ -164,17 +188,7 @@ class APIConnector {
         }
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw APIError.invalidResponse
-        }
-        
-        if httpResponse.statusCode == 401 {
-            AppManager.shared.store.token = nil
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw APIError.invalidResponse
-        }
+        try handleResponse(response)
         
         if method == "DELETE" && data.isEmpty {
             return "{}".data(using: .utf8)!
@@ -187,5 +201,49 @@ class APIConnector {
         let dataToDecode = try await getData(body, url: url, method: method)
     
         return try JSONDecoder().decode(T.self, from: dataToDecode)
+    }
+    
+
+    private func uploadFileMultipart(
+        fileURL: URL,
+        to serverURL: URL,
+        fieldName: String = "file"
+    ) async throws -> (Data, URLResponse) {
+        let boundary = UUID().uuidString
+        var request = URLRequest(url: serverURL)
+        request.httpMethod = .post
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 5 * 60.0
+        if let token = AppManager.shared.store.token {
+            request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        // Read file data
+        let fileData = try Data(contentsOf: fileURL)
+        let filename = fileURL.lastPathComponent
+        let mimeType = mimeTypeForPath(fileURL.path)
+
+        // Build multipart/form-data body
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: \(mimeType)\r\n\r\n".data(using: .utf8)!)
+        body.append(fileData)
+        body.append("\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+        // Upload using async/await
+        let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
+
+        return (responseData, response)
+    }
+
+    private func mimeTypeForPath(_ path: String) -> String {
+        let pathExtension = URL(fileURLWithPath: path).pathExtension
+        if let utType = UTType(filenameExtension: pathExtension),
+           let mimeType = utType.preferredMIMEType {
+            return mimeType
+        }
+        return "application/octet-stream"
     }
 }

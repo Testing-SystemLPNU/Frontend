@@ -8,6 +8,7 @@
 import SwiftUI
 import NiceComponents
 import SwipeActions
+import UniformTypeIdentifiers
 
 struct QuestionsView: View {
     
@@ -69,7 +70,7 @@ struct QuestionsView: View {
                 }
                 .padding(.top, 15)
             }
-            .navigationTitle("Questions:\(hostModel.viewModel.course.title)")
+            .navigationTitle("Questions")
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -79,14 +80,32 @@ struct QuestionsView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack(spacing: 0.0) {
+                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "apple.intelligence"))) {
+                        hostModel.showFileImport()
+                    }
+                    
                     NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
                         hostModel.addNewQuestion()
                     }
+                    }
+                }
+            }
+            .fileImporter(isPresented: $hostModel.viewModel.presentImportFile, allowedContentTypes: [
+                UTType("org.openxmlformats.wordprocessingml.document")!
+            ]) { result in
+                switch result {
+                case .success(let file):
+                    hostModel.generateQuestionsFromFile(at: file)
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             }
             
             if hostModel.viewModel.showProgressView {
                 ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(4.0)
             }
         }
     }

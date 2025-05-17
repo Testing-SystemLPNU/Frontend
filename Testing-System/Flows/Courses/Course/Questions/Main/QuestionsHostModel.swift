@@ -36,6 +36,30 @@ class QuestionsHostModel: BaseHostModel {
         }
     }
     
+    func showFileImport() {
+        viewModel.presentImportFile = true
+        publishUpdate()
+    }
+    
+    func generateQuestionsFromFile(at url: URL) {
+        viewModel.showProgressView = true
+        publishUpdate()
+        let asd = url.startAccessingSecurityScopedResource()
+        AppManager.shared.serialTasks.run { [weak self] in
+            await self?.doGenerateQuestionsFromFile(at: url)
+            url.stopAccessingSecurityScopedResource()
+        }
+    }
+    
+    private func doGenerateQuestionsFromFile(at url: URL) async {
+        do {
+            try await AppManager.shared.apiConnector.generateQuestionsFromFile(at: url, for: viewModel.course)
+        } catch {
+            print("Generate questions error: \(error)")
+        }
+        await doLoadQuestions()
+    }
+    
     func addNewQuestion() {
         edit(question: Question(id: nil, questionText: "", optionA: "", optionB: "", optionC: "", optionD: "", correctOption: .A))
     }
@@ -60,7 +84,7 @@ class QuestionsHostModel: BaseHostModel {
         do {
             try await AppManager.shared.apiConnector.delete(question: question, from: viewModel.course)
         } catch {
-            print("Create course error: \(error)")
+            print("Delete question error: \(error)")
         }
     }
 }
