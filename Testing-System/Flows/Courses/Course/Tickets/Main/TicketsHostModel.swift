@@ -32,7 +32,7 @@ class TicketsHostModel: BaseHostModel {
         }
     }
     
-    func doDelete(ticket: Ticket) async {
+    private func doDelete(ticket: Ticket) async {
         do {
             try await AppManager.shared.apiConnector.delete(ticket: ticket, from: viewModel.course)
         } catch {
@@ -50,7 +50,7 @@ class TicketsHostModel: BaseHostModel {
         }
     }
     
-    func doLoadTickets() async {
+    private func doLoadTickets() async {
         defer {
             viewModel.showProgressView = false
             publishUpdate()

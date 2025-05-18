@@ -1,6 +1,15 @@
 {
-  "originHash" : "92b7b7eb0a22d822617f4ea1ab8037987fb764257b740690696538452cfcba6f",
+  "originHash" : "ca1374b6aa4423389538397bc735abf5cc8319e444d75aae2c10ec88d5c07d78",
   "pins" : [
+    {
+      "identity" : "camera",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Mijick/Camera",
+      "state" : {
+        "revision" : "3cb2b56003910f765d7a5d39d2c2cb49717519cf",
+        "version" : "3.0.2"
+      }
+    },
     {
       "identity" : "keychain-swift",
       "kind" : "remoteSourceControl",
@@ -44,6 +53,15 @@
       "state" : {
         "revision" : "41e6f6dce02d8cfa164f8c5461a41340850ca3ab",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "timer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Mijick/Timer",
+      "state" : {
+        "revision" : "342371c33c3f084d82a4818447ba77d858064c85",
+        "version" : "2.0.0"
       }
     }
   ],

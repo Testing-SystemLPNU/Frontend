@@ -115,7 +115,7 @@ class AddEditTicketHostModel: BaseHostModel {
         }
     }
     
-    func doSharePDF() async {
+    private func doSharePDF() async {
         defer {
             viewModel.showProgressView = false
             publishUpdate()
@@ -133,5 +133,20 @@ class AddEditTicketHostModel: BaseHostModel {
         } catch {
             print("Load PDF error: \(error)")
         }
+    }
+    
+    
+    func verify() {
+        viewModel.showVerifyView = true
+        publishUpdate()
+    }
+}
+
+extension AddEditTicketHostModel: BackNavigation {
+    func back() {
+        defer {
+            publishUpdate()
+        }
+        viewModel.showVerifyView = false
     }
 }

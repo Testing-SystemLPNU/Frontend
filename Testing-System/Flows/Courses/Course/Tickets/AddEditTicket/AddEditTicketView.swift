@@ -16,11 +16,6 @@ struct AddEditTicketView: View {
         return hostModel.viewModel.ticket.id != nil
     }
     
-    enum Flavor: String, CaseIterable, Identifiable {
-        case chocolate, vanilla, strawberry
-        var id: Self { self }
-    }
-    
     @ViewBuilder
     func questionSelectionItem(question: Question) -> some View {
         let isSelected = hostModel.isSelected(question: question)
@@ -42,10 +37,7 @@ struct AddEditTicketView: View {
             }
         }
     }
-
-
-    @State private var selectedFlavor: Flavor = .chocolate
-
+    
     @ViewBuilder
     func ticketView() -> some View {
         ZStack {
@@ -79,7 +71,7 @@ struct AddEditTicketView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing:0) {
                         NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.arrow.trianglehead.counterclockwise"))) {
-                            //                        hostModel.addNewTicket()
+                            hostModel.verify()
                         }
                         
                         NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.circle.fill"))) {
@@ -98,6 +90,11 @@ struct AddEditTicketView: View {
     
     var body: some View {
         VStack {
+            if hostModel.viewModel.showVerifyView {
+                VerifyTicketView(hostModel: VerifyTicketHostModel(course: hostModel.viewModel.course,
+                                                                  ticket: hostModel.viewModel.ticket,
+                                                                  backAction: hostModel))
+            } else {
                 ticketView()
                     .onAppear {
                         hostModel.loadQuestions()
@@ -113,6 +110,7 @@ struct AddEditTicketView: View {
                             ShareSheet(activityItems: [url])
                         }
                     }
+            }
         }
         .padding()
     }

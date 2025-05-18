@@ -61,6 +61,10 @@
 		69B128C72DD9203C00D09ED0 /* AddEditTicketHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C22DD9203C00D09ED0 /* AddEditTicketHostModel.swift */; };
 		69B128C82DD9203C00D09ED0 /* AddEditTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */; };
 		69B128CC2DD9390A00D09ED0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128CB2DD9390900D09ED0 /* ShareSheet.swift */; };
+		69B128CF2DD9535800D09ED0 /* MijickCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 69B128CE2DD9535800D09ED0 /* MijickCamera */; };
+		69B128D42DD954D900D09ED0 /* VerifyTicketHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D02DD954D900D09ED0 /* VerifyTicketHostModel.swift */; };
+		69B128D52DD954D900D09ED0 /* VerifyTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D12DD954D900D09ED0 /* VerifyTicketView.swift */; };
+		69B128D62DD954D900D09ED0 /* VerifyTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D22DD954D900D09ED0 /* VerifyTicketViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +119,9 @@
 		69B128C32DD9203C00D09ED0 /* AddEditTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketView.swift; sourceTree = "<group>"; };
 		69B128C42DD9203C00D09ED0 /* AddEditTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTicketViewModel.swift; sourceTree = "<group>"; };
 		69B128CB2DD9390900D09ED0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		69B128D02DD954D900D09ED0 /* VerifyTicketHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketHostModel.swift; sourceTree = "<group>"; };
+		69B128D12DD954D900D09ED0 /* VerifyTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketView.swift; sourceTree = "<group>"; };
+		69B128D22DD954D900D09ED0 /* VerifyTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +133,7 @@
 				69655FC02DD16EFF0080AE16 /* SwipeActions in Frameworks */,
 				691533032DD0664F00742CD7 /* SwiftUI.framework in Frameworks */,
 				691532ED2DCFCE7A00742CD7 /* KeychainSwift in Frameworks */,
+				69B128CF2DD9535800D09ED0 /* MijickCamera in Frameworks */,
 				6915330F2DD0697B00742CD7 /* NiceComponents in Frameworks */,
 				691533112DD0697B00742CD7 /* NiceInit in Frameworks */,
 			);
@@ -341,6 +349,7 @@
 		69B128B22DD90B4D00D09ED0 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
+				69B128D32DD954D900D09ED0 /* VerifyTicket */,
 				69B128C52DD9203C00D09ED0 /* AddEditTicket */,
 				69B128B12DD90B4D00D09ED0 /* Main */,
 			);
@@ -367,6 +376,16 @@
 			path = AddEditTicket;
 			sourceTree = "<group>";
 		};
+		69B128D32DD954D900D09ED0 /* VerifyTicket */ = {
+			isa = PBXGroup;
+			children = (
+				69B128D02DD954D900D09ED0 /* VerifyTicketHostModel.swift */,
+				69B128D12DD954D900D09ED0 /* VerifyTicketView.swift */,
+				69B128D22DD954D900D09ED0 /* VerifyTicketViewModel.swift */,
+			);
+			path = VerifyTicket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +407,7 @@
 				6915330E2DD0697B00742CD7 /* NiceComponents */,
 				691533102DD0697B00742CD7 /* NiceInit */,
 				69655FBF2DD16EFF0080AE16 /* SwipeActions */,
+				69B128CE2DD9535800D09ED0 /* MijickCamera */,
 			);
 			productName = "Testing-System";
 			productReference = 69796A082DC8853700E7E72A /* Testing-System.app */;
@@ -421,6 +441,7 @@
 				691532EB2DCFCE7A00742CD7 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				6915330D2DD0697B00742CD7 /* XCRemoteSwiftPackageReference "niceComponents" */,
 				69655FBE2DD16EFF0080AE16 /* XCRemoteSwiftPackageReference "SwipeActions" */,
+				69B128CD2DD9535800D09ED0 /* XCRemoteSwiftPackageReference "Camera" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 69796A092DC8853700E7E72A /* Products */;
@@ -463,6 +484,9 @@
 				69B128BF2DD90B4D00D09ED0 /* AddEditQuestionHostModel.swift in Sources */,
 				6915331C2DD07A4300742CD7 /* BackNavigation.swift in Sources */,
 				69655FB02DD15BF70080AE16 /* SignupRequest.swift in Sources */,
+				69B128D42DD954D900D09ED0 /* VerifyTicketHostModel.swift in Sources */,
+				69B128D52DD954D900D09ED0 /* VerifyTicketView.swift in Sources */,
+				69B128D62DD954D900D09ED0 /* VerifyTicketViewModel.swift in Sources */,
 				69655FB72DD160E30080AE16 /* LoginResponse.swift in Sources */,
 				691532F42DCFCF2300742CD7 /* String+Utils.swift in Sources */,
 				69655FB52DD15C630080AE16 /* URLBuilder.swift in Sources */,
@@ -630,6 +654,8 @@
 				DEVELOPMENT_TEAM = XTNZ55VU44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We are going to check tickets using camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to have camera working";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -658,6 +684,8 @@
 				DEVELOPMENT_TEAM = XTNZ55VU44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We are going to check tickets using camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to have camera working";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -724,6 +752,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		69B128CD2DD9535800D09ED0 /* XCRemoteSwiftPackageReference "Camera" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/Camera";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -746,6 +782,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 69655FBE2DD16EFF0080AE16 /* XCRemoteSwiftPackageReference "SwipeActions" */;
 			productName = SwipeActions;
+		};
+		69B128CE2DD9535800D09ED0 /* MijickCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69B128CD2DD9535800D09ED0 /* XCRemoteSwiftPackageReference "Camera" */;
+			productName = MijickCamera;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

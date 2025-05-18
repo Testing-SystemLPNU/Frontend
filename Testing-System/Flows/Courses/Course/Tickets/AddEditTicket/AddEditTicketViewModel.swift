@@ -12,6 +12,7 @@ class AddEditTicketViewModel {
     var ticket: Ticket
     var showProgressView: Bool = false
     var questions: [Question] = []
+    var showVerifyView: Bool = false
     var pdfURL: URL? = nil
     init(course: Course, ticket: Ticket, showProgressView: Bool = false) {
         self.course = course

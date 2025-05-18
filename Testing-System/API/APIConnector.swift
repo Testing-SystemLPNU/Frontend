@@ -130,7 +130,7 @@ class APIConnector {
     }
     
     @discardableResult
-    func update(ticket: Ticket, at course: Course) async throws -> Ticket {
+    func update(ticket: Ticket, at course: Course) async throws -> EmptyModel {
         guard let ticketID = ticket.id,
               let courseId = course.id else {
             throw APIError.wrongBody
