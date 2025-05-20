@@ -175,6 +175,24 @@ class APIConnector {
         return try JSONDecoder().decode(TicketCheckResult.self, from: data)
     }
     
+    func getGroupResults(name: String) async throws -> [StudentResult] {
+        if name.isEmpty {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.tableGroupResults
+        return try await send(GroupName(group: name), url:url, method: .get)
+    }
+    
+    func pdfGroupResults(name: String) async throws -> Data {
+        if name.isEmpty {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.pdfGroupResults
+        return try await getData(GroupName(group: name), url: url, method: .get)
+    }
+    
     // MARK: - Private
     
     private func handleResponse(_ response: URLResponse) throws {

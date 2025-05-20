@@ -24,6 +24,8 @@ class URLBuilder {
         case tickets
         case pdf
         case check
+        case groupResults = "group-results"
+        case table
         // Generate
         case generate
     }
@@ -88,5 +90,17 @@ class URLBuilder {
     var checkURL: URL {
         return baseURL
             .appendingPathComponent(Path.check.rawValue)
+    }
+    
+    var tableGroupResults: URL {
+        return baseURL
+            .appendingPathComponent(Path.groupResults.rawValue)
+            .appendingPathComponent(Path.table.rawValue)
+    }
+    
+    var pdfGroupResults: URL {
+        return baseURL
+            .appendingPathComponent(Path.groupResults.rawValue)
+            .appendingPathComponent(Path.pdf.rawValue)
     }
 }

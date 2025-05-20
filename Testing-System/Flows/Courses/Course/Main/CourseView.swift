@@ -32,6 +32,10 @@ struct CourseView: View {
                     NiceButton("Tickets", style: .bigButton) {
                         hostModel.goToTickets()
                     }
+                    
+                    NiceButton("Group Results", style: .bigButton) {
+                        hostModel.goToGroupResults()
+                    }
                     Spacer()
                 }
                 .padding()
@@ -61,6 +65,8 @@ struct CourseView: View {
                 QuestionsView(hostModel: QuestionsHostModel(course: hostModel.viewModel.course, backAction: hostModel))
             case .tickets:
                 TicketsView(hostModel: TicketsHostModel(course: hostModel.viewModel.course, backAction: hostModel))
+            case .groupResults:
+                GroupResultsView(hostModel: GroupResultsHostModel(course:  hostModel.viewModel.course, backAction: hostModel))
             }
         }
     }

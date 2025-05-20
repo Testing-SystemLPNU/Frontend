@@ -10,6 +10,7 @@ class CourseViewModel {
         case main
         case questions
         case tickets
+        case groupResults
     }
     var course: Course
     var mode: Mode = .main
