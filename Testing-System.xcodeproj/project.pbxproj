@@ -13,6 +13,7 @@
 		69001E972DDC36160048F28A /* GroupResultsHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001E912DDC36160048F28A /* GroupResultsHostModel.swift */; };
 		69001E992DDC37880048F28A /* StudentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001E982DDC37770048F28A /* StudentResult.swift */; };
 		69001E9D2DDC393B0048F28A /* GroupName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001E9C2DDC39380048F28A /* GroupName.swift */; };
+		69001E9F2DDC44550048F28A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 69001E9E2DDC44550048F28A /* Config.xcconfig */; };
 		691532E42DCFCB3B00742CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 691532E02DCFCB3B00742CD7 /* Assets.xcassets */; };
 		691532E52DCFCB3B00742CD7 /* InitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691532E12DCFCB3B00742CD7 /* InitView.swift */; };
 		691532E62DCFCB3B00742CD7 /* Testing_SystemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691532E22DCFCB3B00742CD7 /* Testing_SystemApp.swift */; };
@@ -81,6 +82,7 @@
 		69001E932DDC36160048F28A /* GroupResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupResultsViewModel.swift; sourceTree = "<group>"; };
 		69001E982DDC37770048F28A /* StudentResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentResult.swift; sourceTree = "<group>"; };
 		69001E9C2DDC39380048F28A /* GroupName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupName.swift; sourceTree = "<group>"; };
+		69001E9E2DDC44550048F28A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		691532E02DCFCB3B00742CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		691532E12DCFCB3B00742CD7 /* InitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitView.swift; sourceTree = "<group>"; };
 		691532E22DCFCB3B00742CD7 /* Testing_SystemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing_SystemApp.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		691532E72DCFCB4000742CD7 /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				69001E9E2DDC44550048F28A /* Config.xcconfig */,
 				6991C5CF2DDAF3DB0008A046 /* AppDelegate.swift */,
 				691532EE2DCFCE9000742CD7 /* AppManager.swift */,
 				691532E22DCFCB3B00742CD7 /* Testing_SystemApp.swift */,
@@ -487,6 +490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69001E9F2DDC44550048F28A /* Config.xcconfig in Resources */,
 				691532E42DCFCB3B00742CD7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +567,7 @@
 /* Begin XCBuildConfiguration section */
 		69796A142DC8853700E7E72A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69001E9E2DDC44550048F28A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -626,6 +631,7 @@
 		};
 		69796A152DC8853700E7E72A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69001E9E2DDC44550048F28A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -682,6 +688,7 @@
 		};
 		69796A172DC8853700E7E72A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69001E9E2DDC44550048F28A /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -702,7 +709,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.testing-system.Testing-System";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.testing-system.Testing-System${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -712,6 +719,7 @@
 		};
 		69796A182DC8853700E7E72A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69001E9E2DDC44550048F28A /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -732,7 +740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.testing-system.Testing-System";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.testing-system.Testing-System${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
