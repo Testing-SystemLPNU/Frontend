@@ -22,43 +22,21 @@ class VerifyTicketHostModel: BaseHostModel {
         toggleCamera()
         viewModel.showProgressView = true
         publishUpdate()
-        
-        let requestHandler = VNImageRequestHandler(cgImage: image.cgImage!)
-        
-        let request = VNRecognizeTextRequest { [weak self] request, error in
-            guard let self = self else { return }
-            
-            defer {
-                self.viewModel.showProgressView = false
-                self.publishUpdate()
-            }
-            
-            if let error {
-                print("Error: \(error)")
-                return
-            }
-            
-            guard let observations =
-                    request.results as? [VNRecognizedTextObservation] else {
-                return
-            }
-            let recognizedStrings = observations.compactMap { observation in
-                // Return the string of the top VNRecognizedText instance.
-                print("Detected: \(observation.boundingBox)")
-                return observation.topCandidates(1).first?.string
-            }
-            
-            print(recognizedStrings)
+        AppManager.shared.serialTasks.run { [weak self] in
+            await self?.doCheckTicket(image: image)
         }
-        request.recognitionLanguages = ["en"]
-        request.recognitionLevel = .accurate
-        request.usesLanguageCorrection = true
+    }
+    
+    func doCheckTicket(image: UIImage)  async {
+        defer {
+            viewModel.showProgressView = false
+            publishUpdate()
+        }
         
         do {
-            // Perform the text-recognition request.
-            try requestHandler.perform([request])
+            viewModel.results = try await AppManager.shared.apiConnector.check(ticket: viewModel.ticket, image: image, for: viewModel.course)
         } catch {
-            print("Unable to perform the requests: \(error).")
+            print("Check ticket error: \(error)")
         }
     }
     

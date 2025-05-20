@@ -23,6 +23,7 @@ class URLBuilder {
         // Tickets
         case tickets
         case pdf
+        case check
         // Generate
         case generate
     }
@@ -82,5 +83,10 @@ class URLBuilder {
         return courseURL(withId: id)
             .appendingPathComponent(Path.questions.rawValue)
             .appendingPathComponent(Path.generate.rawValue)
+    }
+    
+    var checkURL: URL {
+        return baseURL
+            .appendingPathComponent(Path.check.rawValue)
     }
 }

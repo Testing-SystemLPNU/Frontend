@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import UniformTypeIdentifiers
 
 fileprivate extension String {
@@ -163,6 +164,17 @@ class APIConnector {
         return try JSONDecoder().decode([Question].self, from: data)
     }
     
+    func check(ticket: Ticket, image: UIImage, for course: Course) async throws -> TicketCheckResult {
+        guard let imageData = image.jpegData(compressionQuality: 0.9) else {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.checkURL
+        let (data, response) = try await uploadFileMultipart(fileData: imageData, to: url)
+        try handleResponse(response)
+        return try JSONDecoder().decode(TicketCheckResult.self, from: data)
+    }
+    
     // MARK: - Private
     
     private func handleResponse(_ response: URLResponse) throws {
@@ -203,11 +215,13 @@ class APIConnector {
         return try JSONDecoder().decode(T.self, from: dataToDecode)
     }
     
-
+    
     private func uploadFileMultipart(
-        fileURL: URL,
+        fileData: Data,
         to serverURL: URL,
-        fieldName: String = "file"
+        fieldName: String = "file",
+        fileName: String = "file",
+        mimeType: String = "application/octet-stream"
     ) async throws -> (Data, URLResponse) {
         let boundary = UUID().uuidString
         var request = URLRequest(url: serverURL)
@@ -218,15 +232,10 @@ class APIConnector {
             request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
 
-        // Read file data
-        let fileData = try Data(contentsOf: fileURL)
-        let filename = fileURL.lastPathComponent
-        let mimeType = mimeTypeForPath(fileURL.path)
-
         // Build multipart/form-data body
         var body = Data()
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
         body.append("Content-Type: \(mimeType)\r\n\r\n".data(using: .utf8)!)
         body.append(fileData)
         body.append("\r\n".data(using: .utf8)!)
@@ -236,6 +245,21 @@ class APIConnector {
         let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
 
         return (responseData, response)
+    }
+
+    private func uploadFileMultipart(
+        fileURL: URL,
+        to serverURL: URL,
+        fieldName: String = "file"
+    ) async throws -> (Data, URLResponse) {
+        // Read file data
+        let fileData = try Data(contentsOf: fileURL)
+        let filename = fileURL.lastPathComponent
+        let mimeType = mimeTypeForPath(fileURL.path)
+        return try await uploadFileMultipart(fileData: fileData,
+                                             to: serverURL,
+                                             fileName: filename,
+                                             mimeType: mimeType)
     }
 
     private func mimeTypeForPath(_ path: String) -> String {

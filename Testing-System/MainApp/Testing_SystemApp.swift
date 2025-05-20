@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Testing_SystemApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             InitView(hostModel: InitHostModel())

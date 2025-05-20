@@ -44,7 +44,7 @@ class QuestionsHostModel: BaseHostModel {
     func generateQuestionsFromFile(at url: URL) {
         viewModel.showProgressView = true
         publishUpdate()
-        let asd = url.startAccessingSecurityScopedResource()
+        _ = url.startAccessingSecurityScopedResource()
         AppManager.shared.serialTasks.run { [weak self] in
             await self?.doGenerateQuestionsFromFile(at: url)
             url.stopAccessingSecurityScopedResource()
