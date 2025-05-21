@@ -69,11 +69,7 @@ struct AddEditTicketView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack(spacing:0) {
-                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.arrow.trianglehead.counterclockwise"))) {
-                            hostModel.verify()
-                        }
-                        
+                    HStack(spacing:0) {                        
                         NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.circle.fill"))) {
                             hostModel.save()
                         }
@@ -90,11 +86,7 @@ struct AddEditTicketView: View {
     
     var body: some View {
         VStack {
-            if hostModel.viewModel.showVerifyView {
-                VerifyTicketView(hostModel: VerifyTicketHostModel(course: hostModel.viewModel.course,
-                                                                  ticket: hostModel.viewModel.ticket,
-                                                                  backAction: hostModel))
-            } else {
+ 
                 ticketView()
                     .onAppear {
                         hostModel.loadQuestions()
@@ -110,7 +102,7 @@ struct AddEditTicketView: View {
                             ShareSheet(activityItems: [url])
                         }
                     }
-            }
+            
         }
         .padding()
     }

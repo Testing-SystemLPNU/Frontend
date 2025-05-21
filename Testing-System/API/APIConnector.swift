@@ -164,7 +164,7 @@ class APIConnector {
         return try JSONDecoder().decode([Question].self, from: data)
     }
     
-    func check(ticket: Ticket, image: UIImage, for course: Course) async throws -> TicketCheckResult {
+    func checkTicket(image: UIImage, for course: Course) async throws -> TicketCheckResult {
         guard let imageData = image.jpegData(compressionQuality: 0.9) else {
             throw APIError.wrongBody
         }

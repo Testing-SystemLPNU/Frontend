@@ -12,8 +12,8 @@ import Vision
 class VerifyTicketHostModel: BaseHostModel {
     @Published var viewModel: VerifyTicketViewModel
     
-    init(course: Course, ticket: Ticket, backAction: BackNavigation) {
-        self.viewModel = VerifyTicketViewModel(course:course, ticket: ticket)
+    init(course: Course, backAction: BackNavigation) {
+        self.viewModel = VerifyTicketViewModel(course:course)
         super.init(backAction: backAction)
     }
     
@@ -34,7 +34,7 @@ class VerifyTicketHostModel: BaseHostModel {
         }
         
         do {
-            viewModel.results = try await AppManager.shared.apiConnector.check(ticket: viewModel.ticket, image: image, for: viewModel.course)
+            viewModel.results = try await AppManager.shared.apiConnector.checkTicket(image: image, for: viewModel.course)
         } catch {
             print("Check ticket error: \(error)")
         }

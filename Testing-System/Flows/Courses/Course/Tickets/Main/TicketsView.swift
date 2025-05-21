@@ -16,19 +16,19 @@ struct TicketsView: View {
     @ViewBuilder
     func ticketItemView(_ ticket: Ticket)  -> some View {
         SwipeView {
-                Button {
-                    hostModel.edit(ticket:ticket)
-                } label: {
-                    HStack {
-                        Spacer()
-                        VStack {
-                            NiceText("\(ticket.studentGroup): \(ticket.studentFullName)",
-                                     style: .itemTitle)
-                        }
-                        Spacer()
+            Button {
+                hostModel.edit(ticket:ticket)
+            } label: {
+                HStack {
+                    Spacer()
+                    VStack {
+                        NiceText("\(ticket.studentGroup): \(ticket.studentFullName)",
+                                 style: .itemTitle)
                     }
-                    .frame(minHeight:40)
+                    Spacer()
                 }
+                .frame(minHeight:40)
+            }
             .background(
                 RoundedRectangle(cornerRadius: 50, style: .continuous)
                     .fill(Config.current.colorStyle.shadow)
@@ -48,7 +48,7 @@ struct TicketsView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     func courseView() -> some View {
         ZStack {
@@ -79,8 +79,13 @@ struct TicketsView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
-                        hostModel.addNewTicket()
+                    HStack(spacing:0) {
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "checkmark.arrow.trianglehead.counterclockwise"))) {
+                            hostModel.verify()
+                        }
+                        NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
+                            hostModel.addNewTicket()
+                        }
                     }
                 }
             }
@@ -93,14 +98,20 @@ struct TicketsView: View {
     
     var body: some View {
         VStack {
+            
             if let ticket = hostModel.viewModel.ticketToEditAdd {
                 AddEditTicketView(hostModel: AddEditTicketHostModel(course: hostModel.viewModel.course, ticket: ticket, backAction: hostModel))
+            } else  if hostModel.viewModel.showVerifyView {
+                VerifyTicketView(hostModel: VerifyTicketHostModel(course: hostModel.viewModel.course,
+                                                                  backAction: hostModel))
+                
             } else {
-                courseView()
-                    .onAppear {
-                        hostModel.loadTickets()
-                    }
+                    
+                    courseView()
+                        .onAppear {
+                            hostModel.loadTickets()
+                        }
+                }
             }
         }
     }
-}

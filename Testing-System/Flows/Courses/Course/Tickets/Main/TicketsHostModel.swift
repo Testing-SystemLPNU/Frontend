@@ -62,6 +62,11 @@ class TicketsHostModel: BaseHostModel {
             print("Load questions error: \(error)")
         }
     }
+    
+    func verify() {
+        viewModel.showVerifyView = true
+        publishUpdate()
+    }
 }
 
 extension TicketsHostModel: BackNavigation {
@@ -69,6 +74,7 @@ extension TicketsHostModel: BackNavigation {
         defer {
             publishUpdate()
         }
+        viewModel.showVerifyView = false
         viewModel.ticketToEditAdd = nil
     }
 }

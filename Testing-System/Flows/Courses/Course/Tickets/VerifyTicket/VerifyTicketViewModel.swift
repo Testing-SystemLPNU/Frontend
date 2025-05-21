@@ -9,11 +9,10 @@ import PDFKit
 
 class VerifyTicketViewModel {
     let course: Course
-    var ticket: Ticket
     var showProgressView: Bool = false
     var showCameraView: Bool = true
     var results: TicketCheckResult? = nil
-    init(course: Course, ticket: Ticket) {
+    init(course: Course) {
         self.course = course
-        self.ticket = ticket    }
+    }
 }

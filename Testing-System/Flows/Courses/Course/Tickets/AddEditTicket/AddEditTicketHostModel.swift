@@ -134,19 +134,4 @@ class AddEditTicketHostModel: BaseHostModel {
             print("Load PDF error: \(error)")
         }
     }
-    
-    
-    func verify() {
-        viewModel.showVerifyView = true
-        publishUpdate()
-    }
-}
-
-extension AddEditTicketHostModel: BackNavigation {
-    func back() {
-        defer {
-            publishUpdate()
-        }
-        viewModel.showVerifyView = false
-    }
 }
