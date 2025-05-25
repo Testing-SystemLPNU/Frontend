@@ -41,8 +41,8 @@ class CoursesHostModel: BaseHostModel {
     }
     
     func showSettings() {
-        AppManager.shared.store.token = nil
-        goBack()
+        viewModel.showSettings = true
+        publishUpdate()
     }
     
     private func doLoadCourses() async {
@@ -81,5 +81,6 @@ extension CoursesHostModel: BackNavigation {
         }
         viewModel.courseToEditAdd = nil
         viewModel.courseView = nil
+        viewModel.showSettings = false
     }
 }

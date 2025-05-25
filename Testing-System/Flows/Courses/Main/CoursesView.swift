@@ -112,6 +112,8 @@ struct CoursesView: View {
                 AddEditCourseView(hostModel: AddEditCourseHostModel(course: courseToEdit, backAction: hostModel))
             } else if let courseToView = hostModel.viewModel.courseView {
                 CourseView(hostModel: CourseHostModel(course: courseToView, backAction: hostModel))
+            } else if hostModel.viewModel.showSettings {
+                SettingsView(hostModel: SettingsHostModel(backAction: hostModel))
             } else {
                 coursesView()
             }

@@ -10,4 +10,5 @@ class CoursesViewModel {
     var courseToEditAdd: Course? = nil
     var courseView: Course? = nil
     var showProgressView: Bool = true
+    var showSettings: Bool = false
 }
