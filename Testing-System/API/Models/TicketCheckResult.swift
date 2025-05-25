@@ -6,8 +6,13 @@
 //
 
 struct TicketCheckResult: Decodable {
-    var scrore: Int
+    var score: Int
     var total: Int
-    var corectAnswers: [String: String]
+    var ticketId: Int
+    var studentFullName: String?
+    var studentGroup: String?
+    var ticketNumber: Int
+    var courseName: String?
+    var correctAnswers: [String: String]
     var yourAnswers: [String: String]
 }

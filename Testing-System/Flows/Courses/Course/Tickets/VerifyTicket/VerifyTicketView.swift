@@ -32,7 +32,20 @@ extension Dictionary where Value == String, Key == String {
     }
 }
 
+public extension NiceTextStyle {
 
+    static var bodyGreen: NiceTextStyle {
+        var res = Config.current.bodyTextStyle
+        res.color = .green
+        return res
+    }
+
+    static var bodyRed: NiceTextStyle {
+        var res = Config.current.bodyTextStyle
+        res.color = .red
+        return res
+    }
+}
 
 struct VerifyTicketView: View {
     
@@ -43,6 +56,9 @@ struct VerifyTicketView: View {
             return []
         }
         return results.yourAnswers.createAnswers(correct: results.yourAnswers)
+            .sorted { ans1, ans2 in
+                Int(ans1.id) ?? 0 < Int(ans2.id) ?? 0
+            }
     }
     
     @ViewBuilder
@@ -51,15 +67,28 @@ struct VerifyTicketView: View {
             NavigationView {
                 let display = answers
                 if let results = hostModel.viewModel.results,
-                      display.isEmpty {
-                    VStack {
-                        NiceText("Score:", style: .sectionTitle)
-                        NiceText("\(results.scrore)/\(results.total)", style: .sectionTitle)
-                        ForEach(display) { answer in
-                            NiceText("\(answer.id). \(answer.answer) - \(answer.isCorrect ? "✅" : "❌")", style: .sectionTitle)
+                      !display.isEmpty {
+                    ScrollView {
+                        NiceText("Ticket:\(results.ticketNumber)", style: .sectionTitle)
+                        NiceText("Student:\(results.studentFullName ?? "")", style: .itemTitle)
+                        NiceText("Group:\(results.studentGroup ?? "")", style: .itemTitle)
+                        
+                        HStack {
+                            NiceText("Score:", style: .itemTitle)
+                            NiceText("\(results.score)/\(results.total)", style: .itemTitle)
                         }
+                        .padding()
+                        ForEach(display) { answer in
+                            HStack {
+                                NiceText("\(answer.id).", style: .body)
+                                NiceText("\(answer.answer)", style: .body)
+                                NiceText("\(answer.correct)", style: answer.isCorrect ? .bodyGreen : .bodyRed)
+                                Spacer()
+                            }
+                        }
+                        
+                        .padding()
                     }
-                   
                 } else {
                     NiceText("Loading...", style: .sectionTitle)
                 }
