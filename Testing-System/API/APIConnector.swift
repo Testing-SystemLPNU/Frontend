@@ -203,6 +203,16 @@ class APIConnector {
         _ = try await send(body, url: url, method: .post) as EmptyModel?
     }
     
+    func getUserInfo() async throws -> UserInfo {
+        let url = urlBuilder.usersURL
+        return try await send(Constants.EmptyResult, url: url, method: .get)
+    }
+    
+    func updatePassword(body: ChangePassword) async throws {
+        let url = urlBuilder.changePasswordURL
+        _ = try await send(body, url: url, method: .post) as EmptyModel?
+    }
+    
     // MARK: - Private
     
     private func handleResponse(_ response: URLResponse) throws {
