@@ -82,5 +82,8 @@ extension CoursesHostModel: BackNavigation {
         viewModel.courseToEditAdd = nil
         viewModel.courseView = nil
         viewModel.showSettings = false
+        if AppManager.shared.store.token == nil {
+            goBack()
+        }
     }
 }

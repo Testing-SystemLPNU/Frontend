@@ -58,8 +58,3 @@ struct AddEditCourseView: View {
         .padding()
     }
 }
-
-#Preview {
-    CoursesView(hostModel: CoursesHostModel())
-        .padding()
-}

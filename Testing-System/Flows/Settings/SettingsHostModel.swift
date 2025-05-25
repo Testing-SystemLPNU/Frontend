@@ -28,8 +28,8 @@ class SettingsHostModel: BaseHostModel {
     }
     
     func logout() {
-        goBack()
         AppManager.shared.store.token = nil
+        goBack()
     }
     
     func closeChangePasswordMode() {
