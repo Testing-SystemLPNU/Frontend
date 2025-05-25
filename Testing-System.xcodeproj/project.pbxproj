@@ -73,6 +73,11 @@
 		69B128D42DD954D900D09ED0 /* VerifyTicketHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D02DD954D900D09ED0 /* VerifyTicketHostModel.swift */; };
 		69B128D52DD954D900D09ED0 /* VerifyTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D12DD954D900D09ED0 /* VerifyTicketView.swift */; };
 		69B128D62DD954D900D09ED0 /* VerifyTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B128D22DD954D900D09ED0 /* VerifyTicketViewModel.swift */; };
+		69F4C3612DE2DE89001CB0F0 /* SettingsHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4C35E2DE2DE89001CB0F0 /* SettingsHostModel.swift */; };
+		69F4C3622DE2DE89001CB0F0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4C3602DE2DE89001CB0F0 /* SettingsViewModel.swift */; };
+		69F4C3632DE2DE89001CB0F0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4C35F2DE2DE89001CB0F0 /* SettingsView.swift */; };
+		69F4C3652DE2E062001CB0F0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4C3642DE2E05F001CB0F0 /* UserInfo.swift */; };
+		69F4C3672DE2E107001CB0F0 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4C3662DE2E107001CB0F0 /* ChangePassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +143,11 @@
 		69B128D02DD954D900D09ED0 /* VerifyTicketHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketHostModel.swift; sourceTree = "<group>"; };
 		69B128D12DD954D900D09ED0 /* VerifyTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketView.swift; sourceTree = "<group>"; };
 		69B128D22DD954D900D09ED0 /* VerifyTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTicketViewModel.swift; sourceTree = "<group>"; };
+		69F4C35E2DE2DE89001CB0F0 /* SettingsHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostModel.swift; sourceTree = "<group>"; };
+		69F4C35F2DE2DE89001CB0F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		69F4C3602DE2DE89001CB0F0 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		69F4C3642DE2E05F001CB0F0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		69F4C3662DE2E107001CB0F0 /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +204,7 @@
 		691532E82DCFCB4E00742CD7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				69F4C35D2DE2DE6F001CB0F0 /* Settings */,
 				69655FAA2DD157430080AE16 /* Courses */,
 				691533172DD06E1200742CD7 /* Signup */,
 				691532FC2DCFED7400742CD7 /* Login */,
@@ -248,6 +259,8 @@
 				69001E8F2DDC2BE30048F28A /* TicketCheckResult.swift */,
 				69001E982DDC37770048F28A /* StudentResult.swift */,
 				69001E9C2DDC39380048F28A /* GroupName.swift */,
+				69F4C3642DE2E05F001CB0F0 /* UserInfo.swift */,
+				69F4C3662DE2E107001CB0F0 /* ChangePassword.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -418,6 +431,16 @@
 			path = VerifyTicket;
 			sourceTree = "<group>";
 		};
+		69F4C35D2DE2DE6F001CB0F0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				69F4C35E2DE2DE89001CB0F0 /* SettingsHostModel.swift */,
+				69F4C35F2DE2DE89001CB0F0 /* SettingsView.swift */,
+				69F4C3602DE2DE89001CB0F0 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -502,10 +525,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F4C3612DE2DE89001CB0F0 /* SettingsHostModel.swift in Sources */,
+				69F4C3622DE2DE89001CB0F0 /* SettingsViewModel.swift in Sources */,
+				69F4C3632DE2DE89001CB0F0 /* SettingsView.swift in Sources */,
 				69B128B42DD90B4D00D09ED0 /* TicketsView.swift in Sources */,
 				69B128B52DD90B4D00D09ED0 /* TicketsViewModel.swift in Sources */,
+				69F4C3652DE2E062001CB0F0 /* UserInfo.swift in Sources */,
 				69B128B62DD90B4D00D09ED0 /* QuestionsView.swift in Sources */,
 				69B128B72DD90B4D00D09ED0 /* TicketsHostModel.swift in Sources */,
+				69F4C3672DE2E107001CB0F0 /* ChangePassword.swift in Sources */,
 				69001E992DDC37880048F28A /* StudentResult.swift in Sources */,
 				69B128B82DD90B4D00D09ED0 /* AddEditQuestionView.swift in Sources */,
 				69B128B92DD90B4D00D09ED0 /* CourseViewModel.swift in Sources */,
@@ -694,7 +722,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XTNZ55VU44;
+				DEVELOPMENT_TEAM = 2M3SLA7JXV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We are going to check tickets using camera";
@@ -725,7 +753,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XTNZ55VU44;
+				DEVELOPMENT_TEAM = 2M3SLA7JXV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We are going to check tickets using camera";

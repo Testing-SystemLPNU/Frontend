@@ -181,7 +181,7 @@ class APIConnector {
         }
         
         let url = urlBuilder.tableGroupResults
-        return try await send(GroupName(group: name), url:url, method: .get)
+        return try await send(GroupName(group: name), url:url, method: .post)
     }
     
     func pdfGroupResults(name: String) async throws -> Data {
@@ -190,7 +190,17 @@ class APIConnector {
         }
         
         let url = urlBuilder.pdfGroupResults
-        return try await getData(GroupName(group: name), url: url, method: .get)
+        return try await getData(GroupName(group: name), url: url, method: .post)
+    }
+    
+    func getUserInfo() async throws -> UserInfo {
+        let url = urlBuilder.usersURL
+        return try await send(Constants.EmptyResult, url: url, method: .get)
+    }
+    
+    func updatePassword(body: ChangePassword) async throws {
+        let url = urlBuilder.changePasswordURL
+        _ = try await send(body, url: url, method: .post) as EmptyModel?
     }
     
     // MARK: - Private

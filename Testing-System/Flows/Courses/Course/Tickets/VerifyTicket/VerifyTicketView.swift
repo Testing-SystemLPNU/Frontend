@@ -20,20 +20,16 @@ struct Answer: Identifiable {
 
 extension Dictionary where Value == String, Key == String {
     func createAnswers(correct: Self) -> [Answer] {
-        let size = Swift.min(count, correct.count)
-        let keys = Array(self.keys)
-        return (0..<size).compactMap {
-            guard let answer = self[keys[$0]],
-                  let correctAnswer = correct[keys[$0]] else {
-                return nil
-            }
-            return Answer(id:keys[$0], answer: answer, correct: correctAnswer)
+        let allKeys = Set(self.keys).union(correct.keys)
+        return allKeys.compactMap { key in
+            guard let correctAnswer = correct[key] else { return nil }
+            let userAnswer = self[key] ?? "-"
+            return Answer(id: key, answer: userAnswer, correct: correctAnswer)
         }
     }
 }
 
 public extension NiceTextStyle {
-
     static var bodyGreen: NiceTextStyle {
         var res = Config.current.bodyTextStyle
         res.color = .green
@@ -55,7 +51,7 @@ struct VerifyTicketView: View {
         guard let results = hostModel.viewModel.results else {
             return []
         }
-        return results.yourAnswers.createAnswers(correct: results.yourAnswers)
+        return results.yourAnswers.createAnswers(correct: results.correctAnswers)
             .sorted { ans1, ans2 in
                 Int(ans1.id) ?? 0 < Int(ans2.id) ?? 0
             }
@@ -69,24 +65,31 @@ struct VerifyTicketView: View {
                 if let results = hostModel.viewModel.results,
                       !display.isEmpty {
                     ScrollView {
-                        NiceText("Ticket:\(results.ticketNumber)", style: .sectionTitle)
-                        NiceText("Student:\(results.studentFullName ?? "")", style: .itemTitle)
-                        NiceText("Group:\(results.studentGroup ?? "")", style: .itemTitle)
-                        
-                        HStack {
-                            NiceText("Score:", style: .itemTitle)
-                            NiceText("\(results.score)/\(results.total)", style: .itemTitle)
-                        }
-                        .padding()
-                        ForEach(display) { answer in
+                        VStack(alignment: .leading, spacing: 12) {
+                            NiceText("Ticket:\(results.ticketNumber)", style: .sectionTitle)
+                            NiceText("Student:\(results.studentFullName ?? "")", style: .itemTitle)
+                            NiceText("Group:\(results.studentGroup ?? "")", style: .itemTitle)
+                            
                             HStack {
-                                NiceText("\(answer.id).", style: .body)
-                                NiceText("\(answer.answer)", style: .body)
-                                NiceText("\(answer.correct)", style: answer.isCorrect ? .bodyGreen : .bodyRed)
-                                Spacer()
+                                NiceText("Score:", style: .itemTitle)
+                                NiceText("\(results.score)/\(results.total)", style: .itemTitle)
+                            }
+                            .padding(.bottom, 8)
+                            
+                            Divider()
+                            
+                            ForEach(display) { answer in
+                                HStack(spacing: 12) {
+                                    NiceText("\(answer.id).", style: .body)
+                                    NiceText(answer.answer, style: answer.isCorrect ? .bodyGreen : .bodyRed)
+                                    if !answer.isCorrect {
+                                        NiceText(answer.correct, style: .bodyGreen)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.vertical, 4)
                             }
                         }
-                        
                         .padding()
                     }
                 } else {
@@ -132,3 +135,4 @@ struct VerifyTicketView: View {
         .padding()
     }
 }
+

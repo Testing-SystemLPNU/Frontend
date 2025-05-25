@@ -18,12 +18,15 @@ class GroupResultsHostModel: BaseHostModel {
     }
     
     func checkGroup(name: String) {
-        if name.isEmpty {
-            return
+            guard !name.isEmpty else { return }
+            
+            viewModel.showProgressView = true
+            publishUpdate()
+            
+            Task {
+                await self.doCheckTicket(name: name)
+            }
         }
-        viewModel.showProgressView = true
-        publishUpdate()
-    }
     
     func checkAnotherGroup() {
         viewModel.results.removeAll()
@@ -32,15 +35,17 @@ class GroupResultsHostModel: BaseHostModel {
     
     func doCheckTicket(name: String)  async {
         defer {
-            viewModel.showProgressView = false
-            publishUpdate()
-        }
-        
-        do {
-            viewModel.results = try await AppManager.shared.apiConnector.getGroupResults(name: name)
-        } catch {
-            print("Get group result error: \(error)")
-        }
+                    viewModel.showProgressView = false
+                    publishUpdate()
+                }
+                
+                do {
+                    print("📡 Sending request for group: \(name)")
+                    viewModel.results = try await AppManager.shared.apiConnector.getGroupResults(name: name)
+                    print("✅ Received results: \(viewModel.results)")
+                } catch {
+                    print("❌ Get group result error: \(error)")
+                }
     }
     
     func sharePDF() {

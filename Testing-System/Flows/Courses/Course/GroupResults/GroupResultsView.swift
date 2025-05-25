@@ -23,17 +23,42 @@ struct GroupResultsView: View {
     }
     
     func resultsView() -> some View {
-        VStack {
-            NiceText("Results:", style: .sectionTitle)
-            ForEach(hostModel.viewModel.results, id: \.self.ticketId) { result in
-                NiceText("\(result.ticketId). \(result.studentName) - \(result.score)", style: .body)
+            VStack(alignment: .leading, spacing: 12) {
+                NiceText("Results for group: \(hostModel.viewModel.groupName)", style: .sectionTitle)
+                    .padding(.bottom, 4)
+                
+                // Заголовок таблиці
+                HStack {
+                    Text("Student").bold().frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Ticket").bold().frame(width: 60, alignment: .center)
+                    Text("Score").bold().frame(width: 60, alignment: .center)
+                    Text("Max Score").bold().frame(width: 80, alignment: .center)
+                }
+                .foregroundColor(.gray)
+                .padding(.bottom, 4)
+                
+                Divider()
+                
+                // Рядки таблиці
+                ForEach(hostModel.viewModel.results, id: \.self.ticketId) { result in
+                    HStack {
+                        Text(result.studentName).frame(maxWidth: .infinity, alignment: .leading)
+                        Text("\(result.ticketId)").frame(width: 60, alignment: .center)
+                        Text("\(result.score)").frame(width: 60, alignment: .center)
+                        Text("\(result.maxScore)").frame(width: 80, alignment: .center)
+                    }
+                    .padding(.vertical, 6)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                }
+                
+                NiceButton("Check Another Group", style: .primary) {
+                    hostModel.checkAnotherGroup()
+                }
+                .padding(.top)
             }
-            
-            NiceButton("Check", style: .primary) {
-                hostModel.checkAnotherGroup()
-            }
+            .padding()
         }
-    }
     
     @ViewBuilder
     func groupResultsView() -> some View {

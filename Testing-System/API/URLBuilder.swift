@@ -28,6 +28,9 @@ class URLBuilder {
         case table
         // Generate
         case generate
+        // User
+        case users
+        case changePassword = "change-password"
     }
     
     init(baseURL: URL) {
@@ -44,6 +47,16 @@ class URLBuilder {
         return baseURL
             .appendingPathComponent(Path.auth.rawValue)
             .appendingPathComponent(Path.login.rawValue)
+    }
+    
+    var usersURL: URL {
+        return baseURL
+            .appendingPathComponent(Path.users.rawValue)
+    }
+    
+    var changePasswordURL: URL {
+        return usersURL
+            .appendingPathComponent(Path.changePassword.rawValue)
     }
     
     var coursesURL: URL {
