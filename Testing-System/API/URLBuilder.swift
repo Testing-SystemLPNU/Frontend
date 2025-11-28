@@ -28,6 +28,7 @@ class URLBuilder {
         case table
         // Generate
         case generate
+        case bloom
         // User
         case users
         case changePassword = "change-password"
@@ -98,6 +99,13 @@ class URLBuilder {
         return courseURL(withId: id)
             .appendingPathComponent(Path.questions.rawValue)
             .appendingPathComponent(Path.generate.rawValue)
+    }
+    
+    func generateQuestionsBloomURL(withId id: String,
+                                   forLevel level: BloomGenerationLevel) -> URL {
+        return generateQuestionsURL(withId: id)
+            .appendingPathComponent(Path.bloom.rawValue)
+            .appending(queryItems: [.init(name: "bloomLevel", value: "\(level.rawValue)")])
     }
     
     var checkURL: URL {

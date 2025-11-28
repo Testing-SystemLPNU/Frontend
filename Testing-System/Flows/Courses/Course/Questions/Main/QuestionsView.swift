@@ -15,21 +15,38 @@ struct QuestionsView: View {
     @StateObject var hostModel: QuestionsHostModel
     
     @ViewBuilder
+    func addButton() -> some View {
+        Menu {
+            NiceButton("AI Generation", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "apple.intelligence"))) {
+                hostModel.showFileImport()
+            }
+            NiceButton("Bloom Generation", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "square.on.square.intersection.dashed"))) {
+                hostModel.showBloomGeneration()
+            }
+            NiceButton("Manual Addition", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.bubble"))) {
+                hostModel.addNewQuestion()
+            }
+        } label: {
+            NiceImage(systemIcon: "plus.circle.fill")
+        }
+    }
+    
+    @ViewBuilder
     func questionItemView(_ question: Question)  -> some View {
         SwipeView {
-                Button {
-                    hostModel.edit(question: question)
-                } label: {
-                    HStack {
-                        Spacer()
-                        VStack {
-                            NiceText(question.questionText,
-                                     style: .itemTitle)
-                        }
-                        Spacer()
+            Button {
+                hostModel.edit(question: question)
+            } label: {
+                HStack {
+                    Spacer()
+                    VStack {
+                        NiceText(question.questionText,
+                                 style: .itemTitle)
                     }
-                    .frame(minHeight:40)
+                    Spacer()
                 }
+                .frame(minHeight:40)
+            }
             .background(
                 RoundedRectangle(cornerRadius: 50, style: .continuous)
                     .fill(Config.current.colorStyle.shadow)
@@ -49,7 +66,7 @@ struct QuestionsView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     func courseView() -> some View {
         ZStack {
@@ -81,13 +98,7 @@ struct QuestionsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 0.0) {
-                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "apple.intelligence"))) {
-                        hostModel.showFileImport()
-                    }
-                    
-                    NiceButton("", style: .borderless, rightImage: NiceButtonImage(NiceImage(systemIcon: "plus.circle.fill"))) {
-                        hostModel.addNewQuestion()
-                    }
+                        addButton()
                     }
                 }
             }
@@ -114,6 +125,8 @@ struct QuestionsView: View {
         VStack {
             if let question = hostModel.viewModel.questionToEditAdd {
                 AddEditQuestionView(hostModel: AddEditQuestionHostModel(course: hostModel.viewModel.course, question: question, backAction: hostModel))
+            } else if hostModel.viewModel.showBloomGeneration {
+                BloomGenerationView(hostModel: BloomGenerationHostModel(course: hostModel.viewModel.course, backAction: hostModel))
             } else {
                 courseView()
                     .onAppear {

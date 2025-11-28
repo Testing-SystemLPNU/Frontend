@@ -152,6 +152,20 @@ class APIConnector {
     }
     
     @discardableResult
+    func generateBloomQuestions(from fileUrl: URL,
+                                for course: Course,
+                                and bloomLevel: BloomGenerationLevel) async throws -> [Question] {
+        guard let courseId = course.id else {
+            throw APIError.wrongBody
+        }
+        
+        let url = urlBuilder.generateQuestionsBloomURL(withId: String(courseId), forLevel: bloomLevel)
+        let (data, response) = try await uploadFileMultipart(fileURL: fileUrl, to: url)
+        try handleResponse(response)
+        return try JSONDecoder().decode([Question].self, from: data)
+    }
+    
+    @discardableResult
     func generateQuestionsFromFile(at fileUrl: URL, for course: Course) async throws -> [Question] {
         guard let courseId = course.id else {
             throw APIError.wrongBody

@@ -14,6 +14,9 @@
 		69001E992DDC37880048F28A /* StudentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001E982DDC37770048F28A /* StudentResult.swift */; };
 		69001E9D2DDC393B0048F28A /* GroupName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001E9C2DDC39380048F28A /* GroupName.swift */; };
 		69001E9F2DDC44550048F28A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 69001E9E2DDC44550048F28A /* Config.xcconfig */; };
+		690CED132ED93D05000B1807 /* BloomGenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CED112ED93D05000B1807 /* BloomGenerationViewModel.swift */; };
+		690CED142ED93D05000B1807 /* BloomGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CED102ED93D05000B1807 /* BloomGenerationView.swift */; };
+		690CED152ED93D05000B1807 /* BloomGenerationHostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CED0F2ED93D05000B1807 /* BloomGenerationHostModel.swift */; };
 		691532E42DCFCB3B00742CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 691532E02DCFCB3B00742CD7 /* Assets.xcassets */; };
 		691532E52DCFCB3B00742CD7 /* InitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691532E12DCFCB3B00742CD7 /* InitView.swift */; };
 		691532E62DCFCB3B00742CD7 /* Testing_SystemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691532E22DCFCB3B00742CD7 /* Testing_SystemApp.swift */; };
@@ -88,6 +91,9 @@
 		69001E982DDC37770048F28A /* StudentResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentResult.swift; sourceTree = "<group>"; };
 		69001E9C2DDC39380048F28A /* GroupName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupName.swift; sourceTree = "<group>"; };
 		69001E9E2DDC44550048F28A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		690CED0F2ED93D05000B1807 /* BloomGenerationHostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomGenerationHostModel.swift; sourceTree = "<group>"; };
+		690CED102ED93D05000B1807 /* BloomGenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomGenerationView.swift; sourceTree = "<group>"; };
+		690CED112ED93D05000B1807 /* BloomGenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomGenerationViewModel.swift; sourceTree = "<group>"; };
 		691532E02DCFCB3B00742CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		691532E12DCFCB3B00742CD7 /* InitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitView.swift; sourceTree = "<group>"; };
 		691532E22DCFCB3B00742CD7 /* Testing_SystemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing_SystemApp.swift; sourceTree = "<group>"; };
@@ -176,6 +182,16 @@
 				69001E932DDC36160048F28A /* GroupResultsViewModel.swift */,
 			);
 			path = GroupResults;
+			sourceTree = "<group>";
+		};
+		690CED122ED93D05000B1807 /* BloomGeneration */ = {
+			isa = PBXGroup;
+			children = (
+				690CED0F2ED93D05000B1807 /* BloomGenerationHostModel.swift */,
+				690CED102ED93D05000B1807 /* BloomGenerationView.swift */,
+				690CED112ED93D05000B1807 /* BloomGenerationViewModel.swift */,
+			);
+			path = BloomGeneration;
 			sourceTree = "<group>";
 		};
 		691532E32DCFCB3B00742CD7 /* Testing-System */ = {
@@ -374,6 +390,7 @@
 		69B128AD2DD90B4D00D09ED0 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				690CED122ED93D05000B1807 /* BloomGeneration */,
 				69B128A82DD90B4D00D09ED0 /* AddEditQuestion */,
 				69B128AC2DD90B4D00D09ED0 /* Main */,
 			);
@@ -557,6 +574,9 @@
 				69655FAB2DD157430080AE16 /* CoursesViewModel.swift in Sources */,
 				69655FAC2DD157430080AE16 /* CoursesView.swift in Sources */,
 				69655FAD2DD157430080AE16 /* CoursesHostModel.swift in Sources */,
+				690CED132ED93D05000B1807 /* BloomGenerationViewModel.swift in Sources */,
+				690CED142ED93D05000B1807 /* BloomGenerationView.swift in Sources */,
+				690CED152ED93D05000B1807 /* BloomGenerationHostModel.swift in Sources */,
 				69B128992DD902E100D09ED0 /* Question.swift in Sources */,
 				69655FBD2DD16DF90080AE16 /* EmptyModel.swift in Sources */,
 				69655FB92DD161370080AE16 /* LoginRequest.swift in Sources */,

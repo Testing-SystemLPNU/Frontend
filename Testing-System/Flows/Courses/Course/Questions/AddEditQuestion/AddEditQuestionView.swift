@@ -15,14 +15,6 @@ struct AddEditQuestionView: View {
     var isEdit: Bool {
         return hostModel.viewModel.question.id != nil
     }
-    
-    enum Flavor: String, CaseIterable, Identifiable {
-        case chocolate, vanilla, strawberry
-        var id: Self { self }
-    }
-
-
-    @State private var selectedFlavor: Flavor = .chocolate
 
     @ViewBuilder
     func questionView() -> some View {
@@ -74,6 +66,8 @@ struct AddEditQuestionView: View {
             
             if hostModel.viewModel.showProgressView {
                 ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(4.0)
             }
         }
     }

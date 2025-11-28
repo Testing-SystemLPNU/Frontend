@@ -1,13 +1,13 @@
 {
-  "originHash" : "ca1374b6aa4423389538397bc735abf5cc8319e444d75aae2c10ec88d5c07d78",
+  "originHash" : "c3a5f16e96c20532aa8f6d509af8430abdae4f676b9d56f45b86e33b6daeb39b",
   "pins" : [
     {
       "identity" : "camera",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Mijick/Camera",
       "state" : {
-        "revision" : "3cb2b56003910f765d7a5d39d2c2cb49717519cf",
-        "version" : "3.0.2"
+        "revision" : "0f02348fcc8fbbc9224c7fbf444f182dc25d0b40",
+        "version" : "3.0.3"
       }
     },
     {

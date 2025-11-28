@@ -41,6 +41,11 @@ class QuestionsHostModel: BaseHostModel {
         publishUpdate()
     }
     
+    func showBloomGeneration() {
+        viewModel.showBloomGeneration = true
+        publishUpdate()
+    }
+    
     func generateQuestionsFromFile(at url: URL) {
         viewModel.showProgressView = true
         publishUpdate()
@@ -96,5 +101,6 @@ extension QuestionsHostModel: BackNavigation {
             publishUpdate()
         }
         viewModel.questionToEditAdd = nil
+        viewModel.showBloomGeneration = false
     }
 }
