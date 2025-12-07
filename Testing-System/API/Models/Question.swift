@@ -21,4 +21,6 @@ struct Question: Codable {
     var optionC: String
     var optionD: String
     var correctOption: Option
+    var questionGenerationType: String? = nil
+    
 }

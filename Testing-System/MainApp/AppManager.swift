@@ -11,7 +11,7 @@ final class AppManager {
     static let shared = AppManager()
     let store = Store()
     let serialTasks = SerialTasks(name: "AppManager")
-    let apiConnector = APIConnector(baseURL: URL(string: "http://localhost:8080")!)
+    let apiConnector = APIConnector(baseURL: URL(string: "http://192.168.0.100:8080")!)
     
     private init() {}
 }
