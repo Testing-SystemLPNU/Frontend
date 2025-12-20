@@ -47,12 +47,16 @@ class QuestionsHostModel: BaseHostModel {
     }
     
     func generateQuestionsFromFile(at url: URL) {
-        viewModel.showProgressView = true
-        publishUpdate()
-        _ = url.startAccessingSecurityScopedResource()
         AppManager.shared.serialTasks.run { [weak self] in
+
+            let access = url.startAccessingSecurityScopedResource()
+            defer {
+                if access {
+                    url.stopAccessingSecurityScopedResource()
+                }
+            }
+
             await self?.doGenerateQuestionsFromFile(at: url)
-            url.stopAccessingSecurityScopedResource()
         }
     }
     

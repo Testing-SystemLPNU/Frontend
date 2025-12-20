@@ -29,20 +29,24 @@ class BloomGenerationHostModel: BaseHostModel {
     }
     
     private func doGenerate() async {
+
+        guard let file = viewModel.selectedFile else { return }
+
+        let access = file.startAccessingSecurityScopedResource()
         defer {
-            viewModel.showProgressView = false
-            publishUpdate()
-            goBack()
+            if access {
+                file.stopAccessingSecurityScopedResource()
+            }
         }
-        
-        guard let file = viewModel.selectedFile else {
-            return
-        }
-        
+
         do {
-            try await AppManager.shared.apiConnector.generateBloomQuestions(from:file, for: viewModel.course, and: viewModel.selectedLevel)
+            try await AppManager.shared.apiConnector.generateBloomQuestions(
+                from: file,
+                for: viewModel.course,
+                and: viewModel.selectedLevel
+            )
         } catch {
-            print("Create question error: \(error)")
+            print("❌ Create question error:", error)
         }
     }
 }
